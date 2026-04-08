@@ -1,0 +1,211 @@
+%============================================================
+% FORMATTING
+% Semua pengaturan tampilan dan layout dokumen.
+% File ini di-input setelah packages.tex dan variables.tex.
+%============================================================
+
+% ── Warna Institusi ──────────────────────────────────────────
+\definecolor{pensbiru}{RGB}{0, 47, 167}    % Biru PENS (#002FA7)
+\definecolor{penskuning}{RGB}{255, 193, 7} % Kuning/emas garis cover
+
+% ── Geometri Halaman (Mirror Margin) ─────────────────────────
+\geometry{
+  a4paper,
+  top    = 3cm,
+  bottom = 3cm,
+  inner  = 4cm,  % Margin kiri pada halaman ganjil (sisi jilid)
+  outer  = 3cm,  % Margin kanan pada halaman ganjil
+  twoside
+}
+
+% ── Spasi Baris ──────────────────────────────────────────────
+\onehalfspacing % Spasi 1,5 sesuai panduan
+
+% ── Indentasi & Paragraf ─────────────────────────────────────
+\setlength{\parindent}{1.27cm}
+\setlength{\parskip}{0pt}
+
+% ── Persamaan Matematika ─────────────────────────────────────
+\setlength{\mathindent}{10mm}
+\setlength{\abovedisplayskip}{-15pt}
+\setlength{\belowdisplayskip}{0pt}
+\setlength{\abovedisplayshortskip}{0pt}
+\setlength{\belowdisplayshortskip}{0pt}
+
+% Nomor persamaan dicetak tebal-miring
+\makeatletter
+\renewcommand{\tagform@}[1]{\maketag@@@{\bfseries\itshape(#1)\@@italiccorr}}
+\makeatother
+
+% ── Format Judul Bab ─────────────────────────────────────────
+\titleformat{\chapter}[display]
+{\centering\fontsize{14}{17}\bfseries}
+{BAB \thechapter}
+{0pt}
+{}
+\titlespacing*{\chapter}{0pt}{0pt}{18pt}
+
+% ── Format Judul Subbab (Section) ────────────────────────────
+\titleformat{\section}
+{\fontsize{14}{17}\bfseries}
+{\thesection}
+{1em}
+{}
+\titlespacing*{\section}{0pt}{16pt}{0pt}
+
+% ── Format Judul Sub-subbab (Subsection) ─────────────────────
+\titleformat{\subsection}
+{\fontsize{12}{14}\bfseries}
+{\thesubsection}
+{1em}
+{}
+\titlespacing*{\subsection}{0pt}{12pt}{4pt}
+
+% ── Caption Gambar ───────────────────────────────────────────
+\captionsetup[figure]{
+  labelfont     = {it},
+  textfont      = {it},
+  font          = {small},   % ~11pt dalam dokumen 12pt
+  justification = centering,
+  skip          = 6pt,
+  name          = Gambar,
+  labelsep      = space
+}
+
+% ── Caption Tabel ────────────────────────────────────────────
+\captionsetup[table]{
+  labelfont     = {it},
+  textfont      = {it},
+  font          = {small},
+  justification = centering,
+  skip          = 6pt,
+  position      = above,
+  name          = Tabel,
+  labelsep      = space
+}
+\renewcommand{\tablename}{Tabel}
+
+% ── Format Default Tabularray ────────────────────────────────
+% Berlaku untuk semua lingkungan tblr dan longtblr
+\SetTblrInner{
+  hlines, vlines,                                             % Garis kotak otomatis
+  row{1} = {bg=gray!20, font=\bfseries, halign=c},           % Header: abu-abu, bold, center
+  rowhead = 1,                                               % Ulangi header jika tabel terpotong halaman
+}
+
+% ── Penomoran Gambar/Tabel/Persamaan per Bab ─────────────────
+% Contoh: Gambar 3.1, Tabel 4.2, Persamaan (3.1)
+\renewcommand{\thefigure}{\thechapter.\arabic{figure}}
+\renewcommand{\thetable}{\thechapter.\arabic{table}}
+\renewcommand{\theequation}{\thechapter.\arabic{equation}}
+
+% ── Header & Footer ──────────────────────────────────────────
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+% ── Halaman Kosong ───────────────────────────────────────────
+% Halaman kosong pada cetak bolak-balik diberi keterangan
+\makeatletter
+\def\cleardoublepage{%
+  \clearpage
+  \if@twoside
+  \ifodd\c@page\else
+  \hbox{}
+  \vspace*{\fill}
+  \begin{center}
+    \textit{Halaman ini sengaja dikosongkan}
+  \end{center}
+  \vspace{\fill}
+  \thispagestyle{empty}
+  \newpage
+  \if@twocolumn\hbox{}\newpage\fi
+  \fi
+  \fi
+}
+\makeatother
+
+% ── Lingkungan Kutipan Panjang (> 2 baris) ───────────────────
+% Font 10pt, margin kanan-kiri masuk 10mm, ditulis miring
+\newenvironment{kutipanpanjang}{%
+  \begin{list}{}{%
+      \setlength{\leftmargin}{10mm}
+      \setlength{\rightmargin}{10mm}
+      \setlength{\topsep}{6pt}
+      \setlength{\itemsep}{0pt}
+      \setlength{\parsep}{0pt}
+    }
+  \item\fontsize{10}{12}\selectfont\itshape\ignorespaces
+  }{%
+    \unskip
+  \end{list}
+}
+
+% ── Hyperref ─────────────────────────────────────────────────
+% Tautan hitam tanpa kotak berwarna
+\hypersetup{
+  colorlinks = true,
+  linkcolor  = black,
+  citecolor  = black,
+  urlcolor   = black,
+  pdftitle   = {\JudulPA},
+  pdfauthor  = {\NamaMahasiswa}
+}
+
+% ── Nama Bahasa Indonesia ────────────────────────────────────
+\renewcommand{\contentsname}{DAFTAR ISI}
+\renewcommand{\listfigurename}{DAFTAR GAMBAR}
+\renewcommand{\listtablename}{DAFTAR TABEL}
+\renewcommand{\bibname}{DAFTAR PUSTAKA}
+\renewcommand{\appendixname}{LAMPIRAN}
+\renewcommand{\chaptername}{BAB}
+
+% ── Judul Daftar Isi/Gambar/Tabel: 14pt, Bold, Center ────────
+\renewcommand{\cfttoctitlefont}{\hfill\fontsize{14}{17}\bfseries\MakeUppercase}
+\renewcommand{\cftaftertoctitle}{\hfill}
+\renewcommand{\cftloftitlefont}{\hfill\fontsize{14}{17}\bfseries\MakeUppercase}
+\renewcommand{\cftafterloftitle}{\hfill}
+\renewcommand{\cftlottitlefont}{\hfill\fontsize{14}{17}\bfseries\MakeUppercase}
+\renewcommand{\cftafterlottitle}{\hfill}
+
+\setlength{\cftbeforetoctitleskip}{0pt}
+\setlength{\cftbeforeloftitleskip}{0pt}
+\setlength{\cftbeforelottitleskip}{0pt}
+\setlength{\cftaftertoctitleskip}{12pt}
+\setlength{\cftafterloftitleskip}{12pt}
+\setlength{\cftafterlottitleskip}{12pt}
+
+% ── Prefix "Gambar" dan "Tabel" di LOF/LOT ───────────────────
+\renewcommand{\cftfigpresnum}{Gambar }
+\renewcommand{\cfttabpresnum}{Tabel }
+\addtolength{\cftfignumwidth}{3.5em}
+\addtolength{\cfttabnumwidth}{2.5em}
+
+% ── Titik-titik di Daftar Isi ────────────────────────────────
+\renewcommand{\cftdotsep}{1.5} % Rapat (default 4.5)
+
+% ── Spasi Konsisten di Daftar Isi ────────────────────────────
+\setlength{\cftbeforechapskip}{0pt}
+\setlength{\cftbeforesecskip}{0pt}
+\setlength{\cftbeforesubsecskip}{0pt}
+\setlength{\cftbeforefigskip}{0pt}
+\setlength{\cftbeforetabskip}{0pt}
+
+% ── Font Level Bab: Bold ─────────────────────────────────────
+\renewcommand{\cftchapfont}{\bfseries}
+\renewcommand{\cftchappagefont}{\bfseries}
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}} % Titik untuk bab
+
+% ── Font Level Section: Normal ───────────────────────────────
+\renewcommand{\cftsecfont}{\normalfont}
+\renewcommand{\cftsecpagefont}{\normalfont}
+
+% ── Prefix "BAB" di Daftar Isi ───────────────────────────────
+\renewcommand{\cftchappresnum}{BAB }
+\addtolength{\cftchapnumwidth}{2.5em}
+
+% ── Format standar Bahasa Indonesia (8 April 2026)
+\renewcommand{\today}{\number\day\space \ifcase\month\or Januari\or Februari\or
+  Maret\or April\or Mei\or Juni\or Juli\or Agustus\or September\or Oktober\or
+November\or Desember\fi\space \number\year}

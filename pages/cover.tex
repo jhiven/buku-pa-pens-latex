@@ -1,0 +1,83 @@
+%============================================================
+% HALAMAN SAMPUL (Cover Berwarna)
+% Dimensi sesuai Panduan Rev05:
+%   Logo     : lebar 3,5 cm
+%   Header   : tinggi 5 cm (area putih)
+%   Garis    : tebal 0,5 cm (warna emas)
+%   Konten   : latar belakang biru PENS
+%============================================================
+\begin{titlepage}
+  \newgeometry{top=0pt, bottom=0pt, left=0pt, right=0pt}
+  \setlength{\fboxsep}{0pt}
+  \pagecolor{pensbiru}
+
+  % ── Bagian 1: Header Putih (tinggi 5 cm) ─────────────────────
+  \noindent
+  \colorbox{white}{%
+    \begin{minipage}[c][5cm][c]{\textwidth}
+      \hspace*{3cm}
+      \begin{minipage}[c]{4cm}
+        \includegraphics[width=3.5cm, keepaspectratio]{logo_pens.png}
+      \end{minipage}
+      \hfill
+      \begin{minipage}[c]{8cm}
+        \raggedleft
+        {\color{pensbiru}\fontsize{20}{24}\bfseries\selectfont PROYEK AKHIR}
+      \end{minipage}
+      \hspace*{3.5cm}
+    \end{minipage}
+  }\par\nointerlineskip
+
+  % ── Bagian 2: Garis Emas (tinggi 0,5 cm) ─────────────────────
+  \noindent
+  \colorbox{penskuning}{%
+    \makebox[\textwidth][l]{\rule{0pt}{0.5cm}}%
+  }\par\nointerlineskip
+
+  % ── Bagian 3: Konten Biru ─────────────────────────────────────
+  \begin{center}
+    \color{white}
+
+    \vspace*{1.6cm}
+
+    \begin{minipage}{\dimexpr\paperwidth-6cm\relax}
+      \centering
+      \fontsize{18}{20}\bfseries\selectfont\MakeUppercase{\JudulPA}
+    \end{minipage}
+    \par
+
+    \vspace{2cm}
+
+    % Identitas mahasiswa: 16pt, bold
+    {\fontsize{16}{20}\bfseries\selectfont \NamaMahasiswa\par}
+    {\fontsize{16}{20}\bfseries\selectfont NRP. \NRP\par}
+
+    \vspace{1.3cm}
+
+    % Dosen pembimbing: 16pt, bold, kapital
+    {\fontsize{16}{20}\bfseries\selectfont DOSEN PEMBIMBING\par}
+    \vspace{0.4cm}
+    {\fontsize{16}{20}\bfseries\selectfont \NamaPembimbingSatu\par}
+    {\fontsize{16}{20}\bfseries\selectfont NIP. \NIPPembimbingSatu\par}
+    \vspace{0.6cm}
+    {\fontsize{16}{20}\bfseries\selectfont \NamaPembimbingDua\par}
+    {\fontsize{16}{20}\bfseries\selectfont NIP. \NIPPembimbingDua\par}
+
+    \vspace{2cm}
+
+    % Program studi: 16pt, bold, kapital
+    {\fontsize{16}{20}\bfseries\selectfont PROGRAM STUDI SARJANA TERAPAN\par}
+    {\fontsize{16}{20}\bfseries\selectfont \MakeUppercase{\NamaProdi}\par}
+    {\fontsize{16}{20}\bfseries\selectfont \MakeUppercase{\NamaDepartemen}\par}
+
+    \vspace{0.8cm}
+
+    % Institusi dan tahun: 16pt, bold, kapital
+    {\fontsize{16}{20}\bfseries\selectfont POLITEKNIK ELEKTRONIKA NEGERI SURABAYA\par}
+    {\fontsize{16}{20}\bfseries\selectfont \TahunLulus\par}
+
+  \end{center}
+
+  \restoregeometry
+\end{titlepage}
+\pagecolor{white}

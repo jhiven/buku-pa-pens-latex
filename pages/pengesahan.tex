@@ -1,0 +1,75 @@
+%============================================================
+% HALAMAN PENGESAHAN
+% Watermark background: background_pens_repeated.png
+%============================================================
+\cleardoublepage
+\thispagestyle{empty}
+
+% Watermark latar belakang
+\tikz[remember picture, overlay]
+\node[inner sep=0pt] at (current page.center){%
+  \includegraphics[width=\paperwidth, height=\paperheight]{background_pens_repeated.png}%
+};
+
+\begin{center}
+  {\fontsize{20}{0}\bfseries HALAMAN PENGESAHAN\par}
+  \vspace{0.8cm}
+
+  \begin{minipage}{1\textwidth}
+    \centering
+    \fontsize{18}{16}\bfseries\selectfont\MakeUppercase{\JudulPA}
+  \end{minipage}
+  \par
+
+  \vspace{0.6cm}
+
+  {\fontsize{14}{17}\selectfont Oleh:\par}
+  \vspace{0.1cm}
+
+  {\fontsize{14}{17}\bfseries
+    \NamaMahasiswa\par
+  NRP. \NRP\par}
+
+  \vspace{0.6cm}
+
+  \begin{spacing}{1}
+    {\fontsize{14}{17}\bfseries
+      Proyek Akhir ini digunakan sebagai salah satu syarat untuk\\
+      memperoleh Gelar \GelarLulus\\
+      di Politeknik Elektronika Negeri Surabaya\\
+    \TahunLulus\par}
+  \end{spacing}
+\end{center}
+
+\vspace{0.2cm}
+\begin{center}
+  {\fontsize{14}{17}\bfseries Disetujui oleh:}
+\end{center}
+\vspace{0.2cm}
+
+% Daftar pembimbing dan penguji beserta kolom tanda tangan
+\noindent
+{\fontsize{14}{17}\selectfont
+  \begin{tabular}{@{}l c l c@{}}
+    Pembimbing 1 & : & \NamaPembimbingSatu   & (\hspace{2.5cm}) \\
+    &   & NIP. \NIPPembimbingSatu & \\[3pt] % Gap antar baris diturunkan dari 10pt menjadi 3pt
+    Pembimbing 2 & : & \NamaPembimbingDua   & (\hspace{2.5cm}) \\
+    &   & NIP. \NIPPembimbingDua & \\[3pt]
+    Penguji 1    & : & \NamaPengujiSatu     & (\hspace{2.5cm}) \\
+    &   & NIP. \NIPPengujiSatu   & \\[3pt]
+    Penguji 2    & : & \NamaPengujiDua      & (\hspace{2.5cm}) \\
+    &   & NIP. \NIPPengujiDua    & \\
+  \end{tabular}
+}
+
+\vspace{0.3cm}
+\begin{center}
+  {\fontsize{14}{17}\bfseries Mengetahui,}\par
+  {\fontsize{14}{17}\selectfont
+    Ketua Program Studi Sarjana Terapan \NamaProdi\par
+  Politeknik Elektronika Negeri Surabaya}\par
+  \vspace{1.5cm} % Tinggi ruang tanda tangan diturunkan dari 1.6cm menjadi 1.2cm
+  {\fontsize{14}{17}\selectfont
+    \underline{\NamaKetuaProdi}\par
+  NIP. \NIPKetuaProdi\par}
+\end{center}
