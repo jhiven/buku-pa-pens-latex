@@ -51,7 +51,7 @@
 {\thesection}
 {1em}
 {}
-\titlespacing*{\section}{0pt}{16pt}{0pt}
+\titlespacing*{\section}{0pt}{15pt}{3pt}
 
 % ── Format Judul Sub-subbab (Subsection) ─────────────────────
 \titleformat{\subsection}
@@ -59,7 +59,20 @@
 {\thesubsection}
 {1em}
 {}
-\titlespacing*{\subsection}{0pt}{12pt}{4pt}
+\titlespacing*{\subsection}{0pt}{8pt}{3pt}
+
+% ── Batas Penomoran dan Daftar Isi ───────────────────────────
+% 0 = Chapter, 1 = Section, 2 = Subsection, 3 = Subsubsection
+\setcounter{secnumdepth}{2}
+\setcounter{tocdepth}{2}
+
+% ── Format Judul Sub-sub-subbab (Subsubsection) ──────────────
+\titleformat{\subsubsection}
+{\fontsize{12}{14}\bfseries}
+{}
+{0pt}
+{}
+\titlespacing*{\subsubsection}{0pt}{3pt}{2pt}
 
 % ── Caption Gambar ───────────────────────────────────────────
 \captionsetup[figure]{
@@ -136,7 +149,7 @@
       \setlength{\itemsep}{0pt}
       \setlength{\parsep}{0pt}
     }
-  \item\fontsize{10}{12}\selectfont\itshape\ignorespaces
+  \item\fontsize{10}{12}\selectfont\ignorespaces
   }{%
     \unskip
   \end{list}
@@ -209,3 +222,7 @@
 \renewcommand{\today}{\number\day\space \ifcase\month\or Januari\or Februari\or
   Maret\or April\or Mei\or Juni\or Juli\or Agustus\or September\or Oktober\or
 November\or Desember\fi\space \number\year}
+
+% ── Jarak (Spasi) Atas/Bawah Gambar dan Tabel ────────────────
+\setlength{\intextsep}{15pt}
+\setlength{\textfloatsep}{15pt}
