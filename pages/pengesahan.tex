@@ -1,15 +1,17 @@
 %============================================================
 % HALAMAN PENGESAHAN
-% Watermark background: background_pens_repeated.png
+% Watermark background otomatis untuk 1 atau lebih halaman.
 %============================================================
 \cleardoublepage
-\thispagestyle{empty}
+\pagestyle{empty} % Memastikan seluruh halaman pengesahan tanpa nomor/header
 
-% Watermark latar belakang
-\tikz[remember picture, overlay]
-\node[inner sep=0pt] at (current page.center){%
-  \includegraphics[width=\paperwidth, height=\paperheight]{background_pens_repeated.png}%
-};
+% 1. Nyalakan watermark secara otomatis mulai dari halaman ini
+\AddToShipoutPictureBG{%
+  \tikz[remember picture, overlay]
+  \node[inner sep=0pt] at (current page.center){%
+    \includegraphics[width=\paperwidth, height=\paperheight]{background_pens_repeated.png}%
+  };
+}
 
 \begin{center}
   {\fontsize{20}{0}\bfseries HALAMAN PENGESAHAN\par}
@@ -52,9 +54,22 @@
 {\fontsize{14}{17}\selectfont
   \begin{tabular}{@{}l c l c@{}}
     Pembimbing 1 & : & \NamaPembimbingSatu   & (\hspace{2.5cm}) \\
-    &   & NIP. \NIPPembimbingSatu & \\[3pt] % Gap antar baris diturunkan dari 10pt menjadi 3pt
+    &   & NIP. \NIPPembimbingSatu & \\[3pt]
     Pembimbing 2 & : & \NamaPembimbingDua   & (\hspace{2.5cm}) \\
     &   & NIP. \NIPPembimbingDua & \\[3pt]
+
+    % Baris kondisional Pembimbing 3 (Akademik)
+    \ifcsvoid{NamaPembimbingTiga}{}{%
+      Pembimbing 3 & : & \NamaPembimbingTiga   & (\hspace{2.5cm}) \\
+      &   & NIP. \NIPPembimbingTiga & \\[3pt]
+    }
+
+    % Baris kondisional Pembimbing Industri
+    \ifcsvoid{NamaPembimbingIndustri}{}{%
+      Pembimbing Industri & : & \NamaPembimbingIndustri & (\hspace{2.5cm}) \\
+      &   &                        & \\[3pt]
+    }
+
     Penguji 1    & : & \NamaPengujiSatu     & (\hspace{2.5cm}) \\
     &   & NIP. \NIPPengujiSatu   & \\[3pt]
     Penguji 2    & : & \NamaPengujiDua      & (\hspace{2.5cm}) \\
@@ -63,13 +78,23 @@
 }
 
 \vspace{0.3cm}
-\begin{center}
-  {\fontsize{14}{17}\bfseries Mengetahui,}\par
-  {\fontsize{14}{17}\selectfont
-    Ketua Program Studi Sarjana Terapan \NamaProdi\par
-  Politeknik Elektronika Negeri Surabaya}\par
-  \vspace{1.5cm} % Tinggi ruang tanda tangan diturunkan dari 1.6cm menjadi 1.2cm
-  {\fontsize{14}{17}\selectfont
-    \underline{\NamaKetuaProdi}\par
-  NIP. \NIPKetuaProdi\par}
-\end{center}
+
+% 2. Blok Mengetahui dibungkus dalam minipage
+%    Jika ruang tidak cukup, SELURUH kotak ini akan pindah ke halaman 2.
+\noindent
+\begin{minipage}{\textwidth}
+  \begin{center}
+    {\fontsize{14}{17}\bfseries Mengetahui,}\par
+    {\fontsize{14}{17}\selectfont
+      Ketua Program Studi Sarjana Terapan \NamaProdi\par
+    Politeknik Elektronika Negeri Surabaya}\par
+    \vspace{1.5cm}
+    {\fontsize{14}{17}\selectfont
+      \underline{\NamaKetuaProdi}\par
+    NIP. \NIPKetuaProdi\par}
+  \end{center}
+\end{minipage}
+
+% 3. Paksa render halaman terakhir, lalu MATIKAN watermark agar tidak bocor
+\clearpage
+\ClearShipoutPictureBG

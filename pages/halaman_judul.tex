@@ -21,44 +21,49 @@
   \end{minipage}
   \par
 
-  \vspace{1.5cm}
-
-  % Identitas mahasiswa: 16pt, bold
-  {\fontsize{16}{20}\bfseries\selectfont
-    \NamaMahasiswa\par
-  NRP. \NRP\par}
-
   \vspace{1.2cm}
 
-  % Label pembimbing: 16pt, bold, kapital
-  {\fontsize{16}{20}\bfseries\selectfont DOSEN PEMBIMBING\par}
-
-  \vspace{0.4cm}
-
-  % Nama pembimbing: 16pt, TIDAK bold
-  {\fontsize{16}{20}\selectfont
-    \NamaPembimbingSatu\par
-  NIP. \NIPPembimbingSatu\par}
-
-  \vspace{0.4cm}
-
-  {\fontsize{16}{20}\selectfont
-    \NamaPembimbingDua\par
-  NIP. \NIPPembimbingDua\par}
-
-  \vspace{2cm}
-
-  % Program studi: 16pt, bold, kapital
-  {\fontsize{16}{20}\bfseries\selectfont
-    PROGRAM STUDI SARJANA TERAPAN\par
-    \MakeUppercase{\NamaProdi}\par
-  \MakeUppercase{\NamaDepartemen}\par}
+  % Identitas mahasiswa: 16pt, bold
+  {\fontsize{16}{20}\bfseries\selectfont \NamaMahasiswa\par}
+  {\fontsize{16}{20}\bfseries\selectfont NRP. \NRP\par}
 
   \vspace{0.8cm}
 
+  % --- Di dalam blok "Dosen Pembimbing" ---
+  {\fontsize{16}{20}\bfseries\selectfont DOSEN PEMBIMBING\par}
+  \vspace{0.3cm}
+  {\fontsize{16}{20}\selectfont \NamaPembimbingSatu\par}
+  {\fontsize{16}{20}\selectfont NIP. \NIPPembimbingSatu\par}
+  \vspace{0.3cm}
+  {\fontsize{16}{20}\selectfont \NamaPembimbingDua\par}
+  {\fontsize{16}{20}\selectfont NIP. \NIPPembimbingDua\par}
+
+  % Logika Pembimbing ke-3 (Akademik)
+  \ifcsvoid{NamaPembimbingTiga}{}{%
+    \vspace{0.3cm}
+    {\fontsize{16}{20}\selectfont \NamaPembimbingTiga\par}
+    {\fontsize{16}{20}\selectfont NIP. \NIPPembimbingTiga\par}
+  }
+
+  % Logika Pembimbing Industri
+  \ifcsvoid{NamaPembimbingIndustri}{}{%
+    \vspace{0.8cm}
+    {\fontsize{16}{20}\bfseries\selectfont PEMBIMBING INDUSTRI\par}
+    \vspace{0.3cm}
+    {\fontsize{16}{20}\selectfont \NamaPembimbingIndustri\par}
+  }
+
+  \vspace{1cm}
+
+  % Program studi: 16pt, bold, kapital
+  {\fontsize{16}{20}\bfseries\selectfont PROGRAM STUDI SARJANA TERAPAN\par}
+  {\fontsize{16}{20}\bfseries\selectfont \MakeUppercase{\NamaProdi}\par}
+  {\fontsize{16}{20}\bfseries\selectfont \MakeUppercase{\NamaDepartemen}\par}
+
+  \vspace{0.5cm}
+
   % Institusi dan tahun: 16pt, bold, kapital
-  {\fontsize{16}{20}\bfseries\selectfont
-    POLITEKNIK ELEKTRONIKA NEGERI SURABAYA\par
-  \TahunLulus\par}
+  {\fontsize{16}{20}\bfseries\selectfont POLITEKNIK ELEKTRONIKA NEGERI SURABAYA\par}
+  {\fontsize{16}{20}\bfseries\selectfont \TahunLulus\par}
 
 \end{center}
