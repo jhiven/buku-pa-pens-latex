@@ -18,6 +18,7 @@ Sarjana Terapan A4 Rev05.
 
 ## Struktur Folder
 
+```
 template-pa-pens/
 ├── main.tex # File utama, compile dari sini
 ├── references.bib # Daftar pustaka format BibTeX
@@ -44,6 +45,7 @@ template-pa-pens/
 ├── bab3.tex # Bab 3 - Desain Sistem
 ├── bab4.tex # Bab 4 - Eksperimen dan Analisis
 └── bab5.tex # Bab 5 - Penutup
+```
 
 ---
 
