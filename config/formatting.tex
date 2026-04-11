@@ -118,6 +118,12 @@
 \fancyfoot[C]{\thepage}
 \renewcommand{\headrulewidth}{0pt}
 
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyfoot[C]{\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+}
+
 % ── Halaman Kosong ───────────────────────────────────────────
 % Halaman kosong pada cetak bolak-balik diberi keterangan
 \makeatletter
@@ -131,7 +137,7 @@
     \textit{Halaman ini sengaja dikosongkan}
   \end{center}
   \vspace{\fill}
-  \thispagestyle{empty}
+  \thispagestyle{fancy}
   \newpage
   \if@twocolumn\hbox{}\newpage\fi
   \fi
