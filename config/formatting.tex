@@ -106,6 +106,26 @@
   rowhead = 1,                                               % Ulangi header jika tabel terpotong halaman
 }
 
+\SetTblrInner[longtblr]{
+  hlines, vlines,
+  row{1} = {bg=gray!20, font=\bfseries, halign=c},
+  rowhead = 1,
+}
+
+% ── Kustomisasi Khusus longtblr ──────────────────────────────
+% 1. Menyamakan format caption longtblr dengan tabel biasa (Italic, 11pt, rata tengah)
+\DefTblrTemplate{caption-sep}{default}{\space}   % Mengganti titik dua (:) menjadi spasi
+\SetTblrStyle{caption-tag}{font=\small\itshape}  % "Tabel 3.1" miring & 11pt
+\SetTblrStyle{caption-text}{font=\small\itshape} % Judul caption miring & 11pt
+\SetTblrStyle{caption-halign}{c}                 % Memaksa caption rata tengah
+
+% Mematikan teks "Continued on next page" dan caption ulangan di halaman selanjutnya
+\DefTblrTemplate{contfoot-text}{default}{} % Hapus "Continued on next page"
+\DefTblrTemplate{conthead-text}{default}{} % Hapus "(Continued)"
+\DefTblrTemplate{capcont}{default}{}       % Hapus judul tabel ulangan
+\DefTblrTemplate{contfoot}{default}{}      % Hapus ruang kosong di bawah
+\DefTblrTemplate{conthead}{default}{}      % Hapus ruang kosong di atas
+
 % ── Penomoran Gambar/Tabel/Persamaan per Bab ─────────────────
 % Contoh: Gambar 3.1, Tabel 4.2, Persamaan (3.1)
 \renewcommand{\thefigure}{\thechapter.\arabic{figure}}
@@ -181,13 +201,13 @@
 \renewcommand{\chaptername}{BAB}
 
 % ── Judul Daftar Isi/Gambar/Tabel: 14pt, Bold, Center ────────
-\renewcommand{\cfttoctitlefont}{\hfill\fontsize{14}{17}\bfseries}
+\renewcommand{\cfttoctitlefont}{\hfill\fontsize{14}{17}\bfseries\MakeUppercase}
 \renewcommand{\cftaftertoctitle}{\hfill\null}
 
-\renewcommand{\cftloftitlefont}{\hfill\fontsize{14}{17}\bfseries}
+\renewcommand{\cftloftitlefont}{\hfill\fontsize{14}{17}\bfseries\MakeUppercase}
 \renewcommand{\cftafterloftitle}{\hfill\null}
 
-\renewcommand{\cftlottitlefont}{\hfill\fontsize{14}{17}\bfseries}
+\renewcommand{\cftlottitlefont}{\hfill\fontsize{14}{17}\bfseries\MakeUppercase}
 \renewcommand{\cftafterlottitle}{\hfill\null}
 
 \setlength{\cftbeforetoctitleskip}{0pt}
@@ -225,11 +245,6 @@
 % ── Prefix "BAB" di Daftar Isi ───────────────────────────────
 \renewcommand{\cftchappresnum}{BAB }
 \addtolength{\cftchapnumwidth}{2.5em}
-
-% ── Format standar Bahasa Indonesia (8 April 2026)
-\renewcommand{\today}{\number\day\space \ifcase\month\or Januari\or Februari\or
-  Maret\or April\or Mei\or Juni\or Juli\or Agustus\or September\or Oktober\or
-November\or Desember\fi\space \number\year}
 
 % ── Jarak (Spasi) Atas/Bawah Gambar dan Tabel ────────────────
 \setlength{\intextsep}{15pt}
