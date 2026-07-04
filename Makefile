@@ -26,6 +26,7 @@ proposal:
 	@echo "==> Kompilasi Proposal PA..."
 	@mkdir -p $(BUILD) $(OUTPUT)/proposal
 	latexmk -pdf main_proposal.tex
+	@rm -f main_proposal.fdb_latexmk main_proposal.fls
 	@cp $(BUILD)/main_proposal.pdf "$(OUTPUT)/proposal/Proposal_PA_$(NAMA)_$(NRP)_$(DATETIME).pdf"
 	@echo "==> Output: $(OUTPUT)/proposal/Proposal_PA_$(NAMA)_$(NRP)_$(DATETIME).pdf"
 
@@ -33,6 +34,7 @@ progres:
 	@echo "==> Kompilasi Progres PA..."
 	@mkdir -p $(BUILD) $(OUTPUT)/progres
 	latexmk -pdf main_progres.tex
+	@rm -f main_progres.fdb_latexmk main_progres.fls
 	@cp $(BUILD)/main_progres.pdf "$(OUTPUT)/progres/Progres_PA_$(NAMA)_$(NRP)_$(DATETIME).pdf"
 	@echo "==> Output: $(OUTPUT)/progres/Progres_PA_$(NAMA)_$(NRP)_$(DATETIME).pdf"
 
@@ -40,6 +42,7 @@ buku:
 	@echo "==> Kompilasi Buku PA..."
 	@mkdir -p $(BUILD) $(OUTPUT)/buku
 	latexmk -pdf main_buku.tex
+	@rm -f main_buku.fdb_latexmk main_buku.fls
 	@cp $(BUILD)/main_buku.pdf "$(OUTPUT)/buku/Buku_PA_$(NAMA)_$(NRP)_$(DATETIME).pdf"
 	@echo "==> Output: $(OUTPUT)/buku/Buku_PA_$(NAMA)_$(NRP)_$(DATETIME).pdf"
 
@@ -48,12 +51,15 @@ clean:
 	@rm -f main_proposal.aux main_proposal.log main_proposal.pdf \
 	       main_proposal.fdb_latexmk main_proposal.fls main_proposal.synctex.gz \
 	       main_proposal.bbl main_proposal.blg main_proposal.out \
+	       main_proposal.toc main_proposal.lof main_proposal.lot \
 	       main_progres.aux main_progres.log main_progres.pdf \
 	       main_progres.fdb_latexmk main_progres.fls main_progres.synctex.gz \
 	       main_progres.bbl main_progres.blg main_progres.out \
+	       main_progres.toc main_progres.lof main_progres.lot \
 	       main_buku.aux main_buku.log main_buku.pdf \
 	       main_buku.fdb_latexmk main_buku.fls main_buku.synctex.gz \
-	       main_buku.bbl main_buku.blg main_buku.out
+	       main_buku.bbl main_buku.blg main_buku.out \
+	       main_buku.toc main_buku.lof main_buku.lot
 	@echo "==> Folder build/ dan file sementara di root dihapus."
 
 cleanall: clean
