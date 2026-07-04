@@ -198,6 +198,7 @@ secara otomatis sehingga root project selalu bersih.
 | Cetak                       | 1 muka (oneside) | 1 muka (oneside) | Bolak-balik (twoside) |
 | Margin kiri                 | 3,0 cm           | 3,0 cm           | 4,0 cm (jilid)   |
 | Margin atas/bawah/kanan     | 2,5 cm           | 2,5 cm           | 3,0 cm           |
+| Spasi baris                 | 1,15 spasi       | 1,15 spasi       | 1,5 spasi        |
 | Indentasi paragraf          | 0,75 cm          | 0,75 cm          | 1,27 cm          |
 
 ---
@@ -336,6 +337,7 @@ Jangan mengubah atau menghapus isi `assets/pens/` karena berisi logo resmi.
 | Font                      | Times New Roman, 12pt                 |
 | Judul bab                 | 14pt, kapital, tebal                  |
 | Spasi                     | 1,5 spasi                             |
+| Indentasi paragraf        | 1,27 cm                               |
 | Margin jilid (kiri)       | 4 cm                                  |
 | Margin atas, bawah, luar  | 3 cm                                  |
 | Cetak                     | Bolak-balik (twoside), mirror margin  |
@@ -349,7 +351,8 @@ Jangan mengubah atau menghapus isi `assets/pens/` karena berisi logo resmi.
 | ------------------------- | ------------------------------------- |
 | Kertas                    | A4, 80 gram                           |
 | Font                      | Times New Roman, 12pt                 |
-| Spasi                     | 1,5 spasi                             |
+| Spasi                     | 1,15 spasi                            |
+| Indentasi paragraf        | 0,75 cm                               |
 | Margin kiri               | 3,0 cm                                |
 | Margin atas, bawah, kanan | 2,5 cm                                |
 | Cetak                     | 1 muka (oneside)                      |
