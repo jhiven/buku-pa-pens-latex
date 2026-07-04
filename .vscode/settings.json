@@ -27,15 +27,19 @@
     }
   ],
 
-  // Jangan auto-build saat file disimpan — gunakan make proposal/progres/buku
-  "latex-workshop.latex.autoBuild.run": "never",
+  // Auto-build setiap kali file .tex disimpan (realtime watch)
+  "latex-workshop.latex.autoBuild.run": "onSave",
 
   // Jangan auto-clean, biarkan Makefile yang mengurus
   "latex-workshop.latex.autoClean.run": "never",
 
-  // SyncTeX: arahkan ke build/ agar forward/inverse search tetap bekerja
+  // SyncTeX: aktifkan setelah build agar forward/inverse search bekerja
   "latex-workshop.synctex.afterBuild.enabled": true,
 
-  // PDF viewer: buka dari build/ atau output/ (sesuaikan jika perlu)
+  // PDF viewer: buka di tab VS Code, auto-refresh setelah build selesai
+  "latex-workshop.view.pdf.viewer": "tab",
+  "latex-workshop.view.pdf.ref.viewer": "auto",
+
+  // Output dir sesuai .latexmkrc
   "latex-workshop.latex.outDir": "build"
 }
