@@ -1,5 +1,12 @@
 %============================================================
-% BAB 1 — PENDAHULUAN
+% BAB 1: PENDAHULUAN
+% Struktur:
+%   Proposal/Progres (\ifbukupa = false):
+%     1.1 Latar Belakang, 1.2 Permasalahan, 1.3 Tujuan,
+%     1.4 Manfaat, 1.5 Sistematika Penulisan
+%   Buku PA (\ifbukupa = true):
+%     1.1 Latar Belakang, 1.2 Permasalahan, 1.3 Batasan Masalah,
+%     1.4 Tujuan, 1.5 Manfaat, 1.6 Sistematika Penulisan
 %============================================================
 \chapter{PENDAHULUAN}
 
@@ -25,6 +32,8 @@ permasalahan yang baik manakala penulis berhasil meyakinkan pembaca tentang sebe
 tinggi tingkat urgensi dari permasalahan tersebut, sehingga pembaca yakin bahwa
 permasalahan tersebut membutuhkan solusi dari penelitian proyek akhir.
 
+% Batasan Masalah: hanya tampil di Buku PA
+\ifbukupa
 \section{BATASAN MASALAH}
 
 Deskripsikan dengan jelas hal-hal yang perlu dibatasi dari permasalahan yang diselesaikan
@@ -36,6 +45,7 @@ dalam proyek akhir. Deskripsi batasan masalah sebaiknya dituliskan dalam bentuk
   \item Batasan masalah kedua.
   \item Batasan masalah ketiga.
 \end{enumerate}
+\fi
 
 \section{TUJUAN}
 
@@ -60,25 +70,6 @@ yang mendapatkan manfaat dari penelitian dan dalam bentuk apa manfaatnya.
 
 Jelaskan tentang sistematika pembahasan dalam buku proyek akhir yang meliputi:
 
-\vspace{0.3cm}
-\begin{description}[leftmargin=2.2cm, labelsep=0cm, itemsep=0.1cm]
-  \item[{\makebox[2.2cm][l]{\textbf{Bab 1}}}] \textbf{Pendahuluan}\\
-    Menjelaskan latar belakang, permasalahan, batasan masalah, tujuan, manfaat,
-    dan sistematika penulisan.
-
-  \item[{\makebox[2.2cm][l]{\textbf{Bab 2}}}] \textbf{Kajian Pustaka}\\
-    Menjelaskan deskripsi permasalahan, teori penunjang, dan penelitian terkait
-    yang mendukung penelitian proyek akhir.
-
-  \item[{\makebox[2.2cm][l]{\textbf{Bab 3}}}] \textbf{Desain Sistem}\\
-    Menjelaskan deskripsi solusi dan perancangan sistem yang diusulkan pada
-    proyek akhir.
-
-  \item[{\makebox[2.2cm][l]{\textbf{Bab 4}}}] \textbf{Eksperimen dan Analisis}\\
-    Menjelaskan parameter eksperimen, karakteristik data, tempat dan waktu
-    ujicoba, spesifikasi peralatan, hasil eksperimen, serta analisis hasil.
-
-  \item[{\makebox[2.2cm][l]{\textbf{Bab 5}}}] \textbf{Penutup}\\
-    Berisi kesimpulan terhadap penelitian yang dilakukan dan saran untuk
-    pengembangan selanjutnya.
-\end{description}
+% File sistematika ditentukan oleh runner (main_*.tex) via \SistematikaFile.
+% Proposal: pages/sistematika_3bab | Progres/Buku: pages/sistematika_5bab
+\input{\SistematikaFile}
