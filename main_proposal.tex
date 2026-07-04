@@ -33,6 +33,11 @@
 
 % Override toggle SETELAH config/toggles
 \proposaltrue
+\showabstraktrue         % Tampilkan Abstrak Bahasa Indonesia
+\showabstracttrue        % Tampilkan Abstract Bahasa Inggris
+\showdaftarisitrue       % Tampilkan Daftar Isi
+\showdaftargambartrue    % Tampilkan Daftar Gambar
+\showforceoddpagetrue    % Paksa setiap konten baru ke halaman ganjil
 
 \input{config/packages}
 \input{config/formatting}       % base layer: aturan shared
@@ -45,12 +50,11 @@
 % Cover Proposal
 \input{formats/cover_proposal}
 
-% Penomoran halaman: langsung Arabic dari hal. 1
+% ── Front Matter: penomoran Romawi kecil ─────────────────────
 \ifshowforceoddpage\cleartooddpage\else\clearpage\fi
 \pagestyle{fancy}
-\pagenumbering{arabic}
+\pagenumbering{roman}
 \setcounter{page}{1}
-\makeatletter\@mainmattertrue\makeatother
 \onehalfspacing
 
 % Front Matter Opsional
@@ -86,6 +90,12 @@
   \endgroup
   \addcontentsline{toc}{chapter}{DAFTAR TABEL}
 \fi
+
+% ── Isi Utama: penomoran Arab dimulai dari 1 ─────────────────
+\ifshowforceoddpage\cleartooddpage\else\clearpage\fi
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\makeatletter\@mainmattertrue\makeatother
 
 % Bab Utama (Proposal: Bab 1-3 saja)
 \newcommand{\SistematikaFile}{pages/sistematika_3bab}
