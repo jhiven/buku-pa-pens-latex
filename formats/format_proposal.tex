@@ -1,0 +1,73 @@
+%============================================================
+% FORMAT: PROPOSAL PROYEK AKHIR
+% Aturan layout khusus Proposal PA.
+% Di-input SETELAH config/formatting.tex agar bisa override.
+%
+% Panduan: PASPE-2022
+%============================================================
+
+% Geometri: single-sided, margin PASPE-2022
+\geometry{
+  a4paper,
+  top    = 2.5cm,
+  bottom = 2.5cm,
+  left   = 3.0cm,
+  right  = 2.5cm
+}
+
+% Spasi Baris
+\onehalfspacing
+
+% Indentasi Paragraf (lebih kecil dari Buku PA)
+% Buku PA: 1.27cm. Proposal: 0.75cm (~3 karakter Times 12pt)
+\setlength{\parindent}{0.75cm}
+
+% Paksa Setiap \chapter ke Halaman Ganjil (opsional)
+% Aktif hanya jika \showforceoddpagetrue diset di main_proposal.tex.
+% Default: off.
+\makeatletter
+\let\old@chapter\@chapter
+\renewcommand{\@chapter}[2][\@empty]{%
+  \ifshowforceoddpage\cleartooddpage\fi
+  \old@chapter[#1]{#2}%
+}
+\makeatother
+
+% ============================================================
+% OVERRIDE FONT SIZE: 12pt SEMUA (Heading, Caption, TOC, dll)
+% ============================================================
+\titleformat{\chapter}[display]
+{\centering\fontsize{12}{14}\bfseries}
+{BAB \thechapter}
+{0pt}
+{}
+
+\titleformat{\section}
+{\fontsize{12}{14}\bfseries}
+{\thesection}
+{1em}
+{}
+\titlespacing*{\section}{0pt}{12pt}{12pt}
+
+\captionsetup[figure]{font=normalsize}
+\captionsetup[table]{font=normalsize}
+\SetTblrStyle{caption-tag}{font=\normalsize\itshape}
+\SetTblrStyle{caption-text}{font=\normalsize\itshape}
+
+\renewcommand{\cfttoctitlefont}{\hfill\fontsize{12}{14}\bfseries\MakeUppercase}
+\renewcommand{\cftloftitlefont}{\hfill\fontsize{12}{14}\bfseries\MakeUppercase}
+\renewcommand{\cftlottitlefont}{\hfill\fontsize{12}{14}\bfseries\MakeUppercase}
+
+\renewenvironment{kutipanpanjang}{%
+  \begin{list}{}{%
+      \setlength{\leftmargin}{10mm}
+      \setlength{\rightmargin}{10mm}
+      \setlength{\topsep}{6pt}
+      \setlength{\itemsep}{0pt}
+      \setlength{\parsep}{0pt}
+    }
+  \item\fontsize{12}{14}\selectfont\ignorespaces
+  }{%
+    \unskip
+  \end{list}
+}

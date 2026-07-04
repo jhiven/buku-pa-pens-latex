@@ -17,7 +17,7 @@
     \begin{minipage}[c][5cm][c]{\textwidth}
       \hspace*{3cm}
       \begin{minipage}[c]{4cm}
-        \includegraphics[width=3.5cm, keepaspectratio]{logo_pens.png}
+        \includegraphics[width=3.5cm, keepaspectratio]{assets/pens/logo_pens.png}
       \end{minipage}
       \hfill
       \begin{minipage}[c]{8cm}
@@ -70,12 +70,18 @@
       {\fontsize{16}{20}\selectfont NIP. \NIPPembimbingTiga\par}
     }
 
-    % Logika Pembimbing Industri
+    % Logika Pembimbing Industri/Dosen Tambahan
     \ifcsvoid{NamaPembimbingIndustri}{}{%
       \vspace{0.8cm}
       {\fontsize{16}{20}\bfseries\selectfont PEMBIMBING INDUSTRI\par}
       \vspace{0.3cm}
       {\fontsize{16}{20}\selectfont \NamaPembimbingIndustri\par}
+      \ifcsvoid{NIPPembimbingIndustri}{}{%
+        {\fontsize{16}{20}\selectfont NIP. \NIPPembimbingIndustri\par}
+      }
+      \ifcsvoid{NamaPerusahaanIndustri}{}{%
+        {\fontsize{16}{20}\selectfont \NamaPerusahaanIndustri\par}
+      }
     }
 
     \vspace{1cm}

@@ -1,0 +1,81 @@
+%============================================================
+% HALAMAN SAMPUL: PROPOSAL PROYEK AKHIR
+%============================================================
+\begin{titlepage}
+  \newgeometry{top=2.5cm, bottom=2.5cm, left=3.0cm, right=2.5cm}
+
+  % Ukur tinggi blok teks kanan agar logo bisa disamakan
+  \newsavebox{\ProposalLabelBox}
+  \newlength{\ProposalLabelH}
+  \sbox{\ProposalLabelBox}{%
+    \begin{minipage}[b]{0.60\textwidth}%
+      \raggedleft%
+      {\fontsize{20}{24}\bfseries\selectfont PROPOSAL\\[2pt]PROYEK AKHIR\par}%
+    \end{minipage}%
+  }
+  \settototalheight{\ProposalLabelH}{\usebox{\ProposalLabelBox}}
+
+  % Header: Logo (kiri, tinggi = sedikit lebih besar dari teks) + Label (kanan)
+  \noindent
+  \begin{minipage}[b]{0.35\textwidth}
+    \raisebox{-0.25cm}{\includegraphics[height=1.43\ProposalLabelH, keepaspectratio]{assets/pens/logo_pens_grayscale.png}}
+  \end{minipage}%
+  \hfill
+  \usebox{\ProposalLabelBox}
+
+  \vfill
+
+  % Judul Proyek Akhir
+  \begin{center}
+    {\fontsize{18}{22}\bfseries\selectfont\MakeUppercase{\JudulPA}\par}
+  \end{center}
+
+  \vfill
+
+  % Identitas & Pembimbing
+  \begin{center}
+    {\fontsize{18}{22}\bfseries\selectfont \NamaMahasiswa\par}
+    {\fontsize{18}{22}\selectfont NRP. \NRP\par}
+
+    \vspace{0.3cm}
+
+    {\fontsize{18}{22}\bfseries\selectfont DOSEN PEMBIMBING\par}
+    \vspace{0.15cm}
+    {\fontsize{18}{20}\selectfont \NamaPembimbingSatu\par}
+    {\fontsize{18}{20}\selectfont NIP. \NIPPembimbingSatu\par}
+    
+    \vspace{0.35cm}
+    {\fontsize{18}{20}\selectfont \NamaPembimbingDua\par}
+    {\fontsize{18}{20}\selectfont NIP. \NIPPembimbingDua\par}
+
+    \ifcsvoid{NamaPembimbingTiga}{}{%
+      \vspace{0.35cm}
+      {\fontsize{18}{20}\selectfont \NamaPembimbingTiga\par}
+      {\fontsize{18}{20}\selectfont NIP. \NIPPembimbingTiga\par}
+    }
+
+    \ifcsvoid{NamaPembimbingIndustri}{}{%
+      \vspace{0.35cm}
+      {\fontsize{18}{20}\selectfont \NamaPembimbingIndustri\par}
+      \ifcsvoid{NIPPembimbingIndustri}{}{%
+        {\fontsize{18}{20}\selectfont NIP. \NIPPembimbingIndustri\par}
+      }
+      \ifcsvoid{NamaPerusahaanIndustri}{}{%
+        {\fontsize{18}{20}\selectfont \NamaPerusahaanIndustri\par}
+      }
+    }
+  \end{center}
+
+  \vfill
+
+  % Program Studi & Institusi
+  \begin{center}
+    {\fontsize{18}{22}\bfseries\selectfont PROGRAM STUDI SARJANA TERAPAN\par}
+    {\fontsize{18}{22}\bfseries\selectfont \MakeUppercase{\NamaProdi}\par}
+    {\fontsize{18}{22}\bfseries\selectfont \MakeUppercase{\NamaDepartemen}\par}
+    {\fontsize{18}{22}\bfseries\selectfont POLITEKNIK ELEKTRONIKA NEGERI SURABAYA\par}
+    {\fontsize{18}{22}\bfseries\selectfont \TahunLulus\par}
+  \end{center}
+
+  \restoregeometry
+\end{titlepage}
