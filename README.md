@@ -16,6 +16,58 @@ satu sumber konten yang sama: **Proposal PA**, **Progres PA**, dan **Buku PA**.
 
 ---
 
+## Setup Editor: VS Code + LaTeX Workshop
+
+Cara paling nyaman untuk menulis dokumen ini adalah menggunakan **VS Code** dengan
+extension [LaTeX Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop).
+Template ini sudah menyertakan konfigurasi siap pakai di `.vscode/settings.json`.
+
+### Instalasi
+
+1. Install extension **LaTeX Workshop** (`James-Yu.latex-workshop`) di VS Code.
+2. Pastikan `latexmk`, `pdflatex`, dan `bibtex` tersedia di PATH
+   (sudah terpenuhi jika TeX Live atau MiKTeX terinstall).
+
+### Kompilasi Pertama Kali
+
+Sebelum preview bisa dibuka, PDF harus ada terlebih dahulu. Jalankan sekali via terminal:
+
+```bash
+make proposal   # atau: make progres / make buku
+```
+
+### Live Preview (Watch Mode)
+
+Setelah PDF pertama tersedia:
+
+1. Buka salah satu file root (`main_proposal.tex`, `main_progres.tex`, atau `main_buku.tex`) di editor.
+2. Buka PDF preview dengan shortcut:
+
+   | Aksi | Shortcut |
+   |------|----------|
+   | Buka PDF preview di tab VS Code | `Ctrl+Alt+V` |
+   | Forward search (editor → PDF) | `Ctrl+Alt+J` |
+   | Backward search (PDF → editor) | `Ctrl+klik` di PDF |
+
+3. Setiap kali file `.tex` disimpan (`Ctrl+S`), LaTeX Workshop akan **otomatis meng-compile** dan **merefresh PDF** di tab preview.
+
+> **Penting**: Pastikan file yang aktif di editor adalah file `main_*.tex` (bukan
+> file chapter atau pages), karena LaTeX Workshop menentukan root file dari file
+> yang sedang aktif. Jika compile gagal karena root file salah, tambahkan magic
+> comment berikut di bagian atas file chapter yang sedang diedit:
+> ```latex
+> %!TeX root = ../main_proposal.tex
+> ```
+
+### SyncTeX (Sinkronisasi Kursor Dua Arah)
+
+SyncTeX memungkinkan navigasi langsung antara kode sumber dan PDF:
+
+- **Editor → PDF**: Tekan `Ctrl+Alt+J` di editor untuk melompat ke posisi tersebut di PDF.
+- **PDF → Editor**: `Ctrl+klik` di PDF viewer untuk melompat ke baris kode sumber yang sesuai.
+
+---
+
 ## Struktur Folder
 
 ```
