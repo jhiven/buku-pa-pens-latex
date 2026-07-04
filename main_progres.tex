@@ -29,6 +29,10 @@
 % Konfigurasi (urutan penting)
 \input{config/variables}
 \input{config/toggles}
+
+% Override toggle SETELAH config/toggles (aktifkan jika diperlukan)
+% \proposalfalse -- progres tidak pakai toggle proposal
+
 \input{config/packages}
 \input{config/formatting}       % base layer: aturan shared
 \input{formats/format_progres}  % per-dokumen: geometry + spacing
@@ -40,12 +44,11 @@
 % Cover Progres
 \input{formats/cover_progres}
 
-% Penomoran halaman: langsung Arabic dari hal. 1
+% ── Front Matter: penomoran Romawi kecil ─────────────────────
 \ifshowforceoddpage\cleartooddpage\else\clearpage\fi
 \pagestyle{fancy}
-\pagenumbering{arabic}
+\pagenumbering{roman}
 \setcounter{page}{1}
-\makeatletter\@mainmattertrue\makeatother
 \onehalfspacing
 
 % Front Matter Opsional
@@ -81,6 +84,12 @@
   \endgroup
   \addcontentsline{toc}{chapter}{DAFTAR TABEL}
 \fi
+
+% ── Isi Utama: penomoran Arab dimulai dari 1 ─────────────────
+\ifshowforceoddpage\cleartooddpage\else\clearpage\fi
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\makeatletter\@mainmattertrue\makeatother
 
 % Bab Utama (Progres: Bab 1-5)
 \newcommand{\SistematikaFile}{pages/sistematika_5bab}
