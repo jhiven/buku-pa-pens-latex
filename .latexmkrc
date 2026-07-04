@@ -13,6 +13,3 @@ $bibtex = 'bibtex %O %B';
 
 # Bersihkan file tambahan saat `latexmk -C`
 $clean_ext = 'synctex.gz synctex(busy) aux bbl blg fdb_latexmk fls log out toc lof lot';
-
-
-

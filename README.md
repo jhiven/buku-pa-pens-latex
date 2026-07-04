@@ -155,14 +155,15 @@ secara otomatis sehingga root project selalu bersih.
 ### Toggle Front Matter (Proposal & Progres)
 
 Front matter Proposal dan Progres default **semua off**. Aktifkan dengan
-uncomment baris yang diinginkan di `main_proposal.tex` atau `main_progres.tex`:
+uncomment baris yang diinginkan di [main_proposal.tex](main_proposal.tex) atau [main_progres.tex](main_progres.tex):
 
 ```latex
-\showabstraktrue         % Tampilkan Abstrak Bahasa Indonesia
-\showabstracttrue        % Tampilkan Abstract Bahasa Inggris
-\showdaftarisitrue       % Tampilkan Daftar Isi
-\showdaftargambartrue    % Tampilkan Daftar Gambar
-\showdaftartabeltrue     % Tampilkan Daftar Tabel
+% \showabstraktrue         % Tampilkan Abstrak Bahasa Indonesia
+% \showabstracttrue        % Tampilkan Abstract Bahasa Inggris
+% \showkatapengantartrue   % Tampilkan Kata Pengantar
+% \showdaftarisitrue       % Tampilkan Daftar Isi
+% \showdaftargambartrue    % Tampilkan Daftar Gambar
+% \showdaftartabeltrue     % Tampilkan Daftar Tabel
 ```
 
 ### Paksa Konten Baru ke Halaman Ganjil
@@ -171,10 +172,10 @@ Untuk Proposal dan Progres (mode oneside), secara default setiap bab dan
 seksi front matter dimulai di halaman berikutnya saja (tidak dipaksa ke
 halaman ganjil). Untuk mengaktifkan perilaku ini (termasuk menyisipkan halaman
 kosong bertulisan *"Halaman ini sengaja dikosongkan"* jika diperlukan), tambahkan di
-`main_proposal.tex` atau `main_progres.tex`:
+[main_proposal.tex](main_proposal.tex) atau [main_progres.tex](main_progres.tex):
 
 ```latex
-\showforceoddpagetrue
+% \showforceoddpagetrue
 ```
 
 Buku PA tidak memerlukan ini karena mode `twoside` + `openright` sudah
@@ -222,26 +223,27 @@ halaman judul, pengesahan, dan pernyataan akan memperbarui diri secara otomatis.
 | `\TahunLulus`, `\BulanLulus` | Tahun dan bulan kelulusan |
 | `\Kota` | Kota (default: Surabaya) |
 
-### Toggle Front Matter (`main_proposal.tex` / `main_progres.tex`)
+### Toggle Front Matter ([main_proposal.tex](main_proposal.tex) / [main_progres.tex](main_progres.tex))
 
 Semua seksi prelim pada Proposal dan Progres default nonaktif. Aktifkan
-dengan uncomment baris berikut:
+dengan uncomment baris berikut di file terkait:
 
 ```latex
-\showabstraktrue         % Tampilkan Abstrak Bahasa Indonesia
-\showabstracttrue        % Tampilkan Abstract Bahasa Inggris
-\showdaftarisitrue       % Tampilkan Daftar Isi
-\showdaftargambartrue    % Tampilkan Daftar Gambar
-\showdaftartabeltrue     % Tampilkan Daftar Tabel
+% \showabstraktrue         % Tampilkan Abstrak Bahasa Indonesia
+% \showabstracttrue        % Tampilkan Abstract Bahasa Inggris
+% \showkatapengantartrue   % Tampilkan Kata Pengantar
+% \showdaftarisitrue       % Tampilkan Daftar Isi
+% \showdaftargambartrue    % Tampilkan Daftar Gambar
+% \showdaftartabeltrue     % Tampilkan Daftar Tabel
 ```
 
-### Paksa Halaman Ganjil (`main_proposal.tex` / `main_progres.tex`)
+### Paksa Halaman Ganjil ([main_proposal.tex](main_proposal.tex) / [main_progres.tex](main_progres.tex))
 
 Default nonaktif karena Proposal dan Progres dicetak 1 muka. Jika diperlukan
 (misalnya untuk dicetak bolak-balik secara mandiri), aktifkan dengan:
 
 ```latex
-\showforceoddpagetrue
+% \showforceoddpagetrue
 ```
 
 Setiap bab dan seksi front matter akan dimulai di halaman ganjil, dengan
