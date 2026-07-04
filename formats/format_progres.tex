@@ -15,8 +15,8 @@
   right  = 2.5cm
 }
 
-% Spasi Baris
-\onehalfspacing
+% Spasi Baris (1.15 — lebih kompak dari Buku PA yang pakai 1.5)
+\setstretch{1.15}
 
 % Indentasi Paragraf (lebih kecil dari Buku PA)
 % Buku PA: 1.27cm. Progres: 0.75cm (~3 karakter Times 12pt)
@@ -41,6 +41,7 @@
 {BAB \thechapter}
 {0pt}
 {}
+\titlespacing*{\chapter}{0pt}{0pt}{12pt}
 
 \titleformat{\section}
 {\fontsize{12}{14}\bfseries}
