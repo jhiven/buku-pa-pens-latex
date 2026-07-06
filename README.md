@@ -4,6 +4,8 @@ Template LaTeX untuk penulisan dokumen Proyek Akhir (PA) Program Sarjana Terapan
 Politeknik Elektronika Negeri Surabaya (PENS). Mendukung 3 jenis dokumen dari
 satu sumber konten yang sama: **Proposal PA**, **Progres PA**, dan **Buku PA**.
 
+> 📗 Butuh template untuk **Kerja Praktik (KP)**? → [ristekhimitpens/buku-kp-pens-latex](https://github.com/ristekhimitpens/buku-kp-pens-latex)
+
 ---
 
 ## Persyaratan
