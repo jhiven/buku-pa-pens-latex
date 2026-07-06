@@ -84,11 +84,11 @@ Setelah PDF pertama tersedia:
 1. Buka salah satu file root (`main_proposal.tex`, `main_progres.tex`, atau `main_buku.tex`) di editor.
 2. Buka PDF preview dengan shortcut:
 
-   | Aksi | Shortcut |
-   |------|----------|
-   | Buka PDF preview di tab VS Code | `Ctrl+Alt+V` |
-   | Forward search (editor → PDF) | `Ctrl+Alt+J` |
-   | Backward search (PDF → editor) | `Ctrl+klik` di PDF |
+   | Aksi                            | Shortcut           |
+   | ------------------------------- | ------------------ |
+   | Buka PDF preview di tab VS Code | `Ctrl+Alt+V`       |
+   | Forward search (editor → PDF)   | `Ctrl+Alt+J`       |
+   | Backward search (PDF → editor)  | `Ctrl+klik` di PDF |
 
 3. Setiap kali file `.tex` disimpan (`Ctrl+S`), LaTeX Workshop akan **otomatis meng-compile** dan **merefresh PDF** di tab preview. File intermediate masuk ke `build/`, bukan root folder.
 
@@ -96,6 +96,7 @@ Setelah PDF pertama tersedia:
 > file chapter atau pages), karena LaTeX Workshop menentukan root file dari file
 > yang sedang aktif. Jika compile gagal karena root file salah, tambahkan magic
 > comment berikut di bagian atas file chapter yang sedang diedit:
+>
 > ```latex
 > %!TeX root = ../main_proposal.tex
 > ```
@@ -106,8 +107,6 @@ SyncTeX memungkinkan navigasi langsung antara kode sumber dan PDF:
 
 - **Editor → PDF**: Tekan `Ctrl+Alt+J` di editor untuk melompat ke posisi tersebut di PDF.
 - **PDF → Editor**: `Ctrl+klik` di PDF viewer untuk melompat ke baris kode sumber yang sesuai.
-
-
 
 ---
 
@@ -227,22 +226,22 @@ secara otomatis sehingga root project selalu bersih.
 
 ## Perbedaan 3 Jenis Dokumen
 
-| Komponen                    | Proposal PA      | Progres PA       | Buku PA          |
-| --------------------------- | :--------------: | :--------------: | :--------------: |
-| Cover                       | Putih, grayscale | Putih, grayscale | Biru PENS        |
-| Halaman Judul & Pengesahan  | -                | -                | Ya               |
-| Orisinalitas & Hak Cipta    | -                | -                | Ya               |
-| Abstrak, Kata Pengantar     | toggle (off)     | toggle (off)     | Ya               |
-| Daftar Isi/Gambar/Tabel     | toggle (off)     | toggle (off)     | Ya               |
-| Bab 1-3                     | Ya               | Ya               | Ya               |
-| Bab 4-5                     | -                | Ya               | Ya               |
-| Lampiran                    | -                | Ya               | Ya               |
-| Sistematika Bab 4-5         | -                | Ya               | Ya               |
-| Cetak                       | 1 muka (oneside) | 1 muka (oneside) | Bolak-balik (twoside) |
-| Margin kiri                 | 3,0 cm           | 3,0 cm           | 4,0 cm (jilid)   |
-| Margin atas/bawah/kanan     | 2,5 cm           | 2,5 cm           | 3,0 cm           |
-| Spasi baris                 | 1,15 spasi       | 1,15 spasi       | 1,5 spasi        |
-| Indentasi paragraf          | 0,75 cm          | 0,75 cm          | 1,27 cm          |
+| Komponen                   |   Proposal PA    |    Progres PA    |        Buku PA        |
+| -------------------------- | :--------------: | :--------------: | :-------------------: |
+| Cover                      | Putih, grayscale | Putih, grayscale |       Biru PENS       |
+| Halaman Judul & Pengesahan |        -         |        -         |          Ya           |
+| Orisinalitas & Hak Cipta   |        -         |        -         |          Ya           |
+| Abstrak, Kata Pengantar    |   toggle (off)   |   toggle (off)   |          Ya           |
+| Daftar Isi/Gambar/Tabel    |   toggle (off)   |   toggle (off)   |          Ya           |
+| Bab 1-3                    |        Ya        |        Ya        |          Ya           |
+| Bab 4-5                    |        -         |        Ya        |          Ya           |
+| Lampiran                   |        -         |        Ya        |          Ya           |
+| Sistematika Bab 4-5        |        -         |        Ya        |          Ya           |
+| Cetak                      | 1 muka (oneside) | 1 muka (oneside) | Bolak-balik (twoside) |
+| Margin kiri                |      3,0 cm      |      3,0 cm      |    4,0 cm (jilid)     |
+| Margin atas/bawah/kanan    |      2,5 cm      |      2,5 cm      |        3,0 cm         |
+| Spasi baris                |    1,15 spasi    |    1,15 spasi    |       1,5 spasi       |
+| Indentasi paragraf         |     0,75 cm      |     0,75 cm      |        1,27 cm        |
 
 ---
 
@@ -267,7 +266,7 @@ uncomment baris yang diinginkan di [main_proposal.tex](main_proposal.tex) atau [
 Untuk Proposal dan Progres (mode oneside), secara default setiap bab dan
 seksi front matter dimulai di halaman berikutnya saja (tidak dipaksa ke
 halaman ganjil). Untuk mengaktifkan perilaku ini (termasuk menyisipkan halaman
-kosong bertulisan *"Halaman ini sengaja dikosongkan"* jika diperlukan), tambahkan di
+kosong bertulisan _"Halaman ini sengaja dikosongkan"_ jika diperlukan), tambahkan di
 [main_proposal.tex](main_proposal.tex) atau [main_progres.tex](main_progres.tex):
 
 ```latex
@@ -285,12 +284,12 @@ Semua pembimbing di luar Pembimbing 1 dan 2 bersifat opsional dan diatur
 di `config/variables.tex`. Kosongkan nama untuk menyembunyikan baris tersebut
 di semua cover secara otomatis.
 
-| Kondisi                              | Yang diisi                                          |
-| ------------------------------------ | --------------------------------------------------- |
-| Hanya 2 pembimbing (standar)         | Kosongkan `NamaPembimbingTiga` dan `NamaPembimbingIndustri` |
-| Ada Pembimbing Akademik ke-3         | Isi `NamaPembimbingTiga` + `NIPPembimbingTiga`      |
-| Ada Pembimbing Tambahan (Dosen)      | Isi `NamaPembimbingIndustri` + `NIPPembimbingIndustri`, kosongkan `NamaPerusahaanIndustri` |
-| Ada Pembimbing dari Industri         | Isi `NamaPembimbingIndustri` + `NamaPerusahaanIndustri`, kosongkan `NIPPembimbingIndustri` |
+| Kondisi                         | Yang diisi                                                                                 |
+| ------------------------------- | ------------------------------------------------------------------------------------------ |
+| Hanya 2 pembimbing (standar)    | Kosongkan `NamaPembimbingTiga` dan `NamaPembimbingIndustri`                                |
+| Ada Pembimbing Akademik ke-3    | Isi `NamaPembimbingTiga` + `NIPPembimbingTiga`                                             |
+| Ada Pembimbing Tambahan (Dosen) | Isi `NamaPembimbingIndustri` + `NIPPembimbingIndustri`, kosongkan `NamaPerusahaanIndustri` |
+| Ada Pembimbing dari Industri    | Isi `NamaPembimbingIndustri` + `NamaPerusahaanIndustri`, kosongkan `NIPPembimbingIndustri` |
 
 Logika kondisional sudah ditangani otomatis di semua cover (Proposal, Progres, Buku PA).
 
@@ -305,19 +304,19 @@ Berikut adalah daftar lengkap hal-hal yang dapat diubah tanpa merusak struktur t
 Satu-satunya file yang perlu diedit untuk mengubah identitas. Semua cover,
 halaman judul, pengesahan, dan pernyataan akan memperbarui diri secara otomatis.
 
-| Variabel | Keterangan |
-| -------- | ---------- |
-| `\NamaMahasiswa`, `\NRP` | Nama dan NRP penulis |
-| `\JudulPA` | Judul Proyek Akhir (muncul di semua cover) |
-| `\NamaPembimbingSatu/Dua` + `\NIP*` | Dosen Pembimbing 1 dan 2 (wajib) |
-| `\NamaPembimbingTiga` + `\NIPPembimbingTiga` | Dosen Pembimbing ke-3, opsional |
-| `\NamaPembimbingIndustri` | Nama pembimbing tambahan/industri, opsional |
-| `\NIPPembimbingIndustri` | Diisi jika pembimbing tambahan adalah dosen |
-| `\NamaPerusahaanIndustri` | Diisi jika pembimbing tambahan dari industri |
-| `\NamaProdi`, `\NamaDepartemen` | Nama program studi dan departemen |
-| `\NamaKetuaProdi` | Nama Ketua Prodi (untuk halaman pengesahan) |
-| `\TahunLulus`, `\BulanLulus` | Tahun dan bulan kelulusan |
-| `\Kota` | Kota (default: Surabaya) |
+| Variabel                                     | Keterangan                                   |
+| -------------------------------------------- | -------------------------------------------- |
+| `\NamaMahasiswa`, `\NRP`                     | Nama dan NRP penulis                         |
+| `\JudulPA`                                   | Judul Proyek Akhir (muncul di semua cover)   |
+| `\NamaPembimbingSatu/Dua` + `\NIP*`          | Dosen Pembimbing 1 dan 2 (wajib)             |
+| `\NamaPembimbingTiga` + `\NIPPembimbingTiga` | Dosen Pembimbing ke-3, opsional              |
+| `\NamaPembimbingIndustri`                    | Nama pembimbing tambahan/industri, opsional  |
+| `\NIPPembimbingIndustri`                     | Diisi jika pembimbing tambahan adalah dosen  |
+| `\NamaPerusahaanIndustri`                    | Diisi jika pembimbing tambahan dari industri |
+| `\NamaProdi`, `\NamaDepartemen`              | Nama program studi dan departemen            |
+| `\NamaKetuaProdi`                            | Nama Ketua Prodi (untuk halaman pengesahan)  |
+| `\TahunLulus`, `\BulanLulus`                 | Tahun dan bulan kelulusan                    |
+| `\Kota`                                      | Kota (default: Surabaya)                     |
 
 ### Toggle Front Matter ([main_proposal.tex](main_proposal.tex) / [main_progres.tex](main_progres.tex))
 
@@ -343,29 +342,31 @@ Default nonaktif karena Proposal dan Progres dicetak 1 muka. Jika diperlukan
 ```
 
 Setiap bab dan seksi front matter akan dimulai di halaman ganjil, dengan
-halaman kosong bertulisan *"Halaman ini sengaja dikosongkan"* disisipkan bila perlu.
+halaman kosong bertulisan _"Halaman ini sengaja dikosongkan"_ disisipkan bila perlu.
 
 ### Konten Bab (`chapters/` dan `pages/`)
 
-| File | Keterangan |
-| ---- | ---------- |
-| `chapters/bab1.tex` s.d. `bab5.tex` | Isi bab utama, langsung edit |
-| `pages/abstrak.tex` | Abstrak Bahasa Indonesia |
-| `pages/abstract.tex` | Abstract Bahasa Inggris |
-| `pages/kata_pengantar.tex` | Kata Pengantar |
-| `pages/orisinalitas.tex` | Pernyataan Orisinalitas |
-| `pages/hak_cipta.tex` | Pernyataan Pengalihan Hak Cipta |
-| `pages/lampiran.tex` | Lampiran (Progres dan Buku PA) |
-| `pages/sistematika_3bab.tex` | Isi sistematika untuk Proposal (Bab 1-3) |
-| `pages/sistematika_5bab.tex` | Isi sistematika untuk Progres/Buku (Bab 1-5) |
-| `refs/references.bib` | Daftar referensi BibTeX |
+| File                                | Keterangan                                   |
+| ----------------------------------- | -------------------------------------------- |
+| `chapters/bab1.tex` s.d. `bab5.tex` | Isi bab utama, langsung edit                 |
+| `pages/abstrak.tex`                 | Abstrak Bahasa Indonesia                     |
+| `pages/abstract.tex`                | Abstract Bahasa Inggris                      |
+| `pages/kata_pengantar.tex`          | Kata Pengantar                               |
+| `pages/orisinalitas.tex`            | Pernyataan Orisinalitas                      |
+| `pages/hak_cipta.tex`               | Pernyataan Pengalihan Hak Cipta              |
+| `pages/lampiran.tex`                | Lampiran (Progres dan Buku PA)               |
+| `pages/sistematika_3bab.tex`        | Isi sistematika untuk Proposal (Bab 1-3)     |
+| `pages/sistematika_5bab.tex`        | Isi sistematika untuk Progres/Buku (Bab 1-5) |
+| `refs/references.bib`               | Daftar referensi BibTeX                      |
 
 ### Aset Gambar (`assets/`)
 
 Letakkan gambar di folder `assets/`. Gunakan path relatif dari root:
+
 ```latex
 \includegraphics[width=0.8\textwidth]{assets/nama_gambar.png}
 ```
+
 Jangan mengubah atau menghapus isi `assets/pens/` karena berisi logo resmi.
 
 ---
@@ -374,35 +375,35 @@ Jangan mengubah atau menghapus isi `assets/pens/` karena berisi logo resmi.
 
 ### Buku PA (Rev05)
 
-| Elemen                    | Ketentuan                             |
-| ------------------------- | ------------------------------------- |
-| Kertas                    | A4, 80 gram                           |
-| Font                      | Times New Roman, 12pt                 |
-| Judul bab                 | 14pt, kapital, tebal                  |
-| Spasi                     | 1,5 spasi                             |
-| Indentasi paragraf        | 1,27 cm                               |
-| Margin jilid (kiri)       | 4 cm                                  |
-| Margin atas, bawah, luar  | 3 cm                                  |
-| Cetak                     | Bolak-balik (twoside), mirror margin  |
-| Nomor halaman prelim      | Romawi kecil (i, ii, iii, ...)        |
-| Nomor halaman isi         | Arab, dimulai dari Bab 1              |
-| Sampul                    | Biru PENS #002FA7                     |
+| Elemen                   | Ketentuan                            |
+| ------------------------ | ------------------------------------ |
+| Kertas                   | A4, 80 gram                          |
+| Font                     | Times New Roman, 12pt                |
+| Judul bab                | 14pt, kapital, tebal                 |
+| Spasi                    | 1,5 spasi                            |
+| Indentasi paragraf       | 1,27 cm                              |
+| Margin jilid (kiri)      | 4 cm                                 |
+| Margin atas, bawah, luar | 3 cm                                 |
+| Cetak                    | Bolak-balik (twoside), mirror margin |
+| Nomor halaman prelim     | Romawi kecil (i, ii, iii, ...)       |
+| Nomor halaman isi        | Arab, dimulai dari Bab 1             |
+| Sampul                   | Biru PENS #002FA7                    |
 
 ### Proposal PA & Progres PA (PASPE-2022)
 
-| Elemen                    | Ketentuan                             |
-| ------------------------- | ------------------------------------- |
-| Kertas                    | A4, 80 gram                           |
-| Font                      | Times New Roman, 12pt                 |
-| Spasi                     | 1,15 spasi                            |
-| Indentasi paragraf        | 0,75 cm                               |
-| Margin kiri               | 3,0 cm                                |
-| Margin atas, bawah, kanan | 2,5 cm                                |
-| Cetak                     | 1 muka (oneside)                      |
-| Nomor halaman             | Arab, di bawah tengah                 |
-| Sampul                    | Putih, logo PENS grayscale            |
+| Elemen                    | Ketentuan                                   |
+| ------------------------- | ------------------------------------------- |
+| Kertas                    | A4, 80 gram                                 |
+| Font                      | Times New Roman, 12pt                       |
+| Spasi                     | 1,15 spasi                                  |
+| Indentasi paragraf        | 0,75 cm                                     |
+| Margin kiri               | 3,0 cm                                      |
+| Margin atas, bawah, kanan | 2,5 cm                                      |
+| Cetak                     | 1 muka (oneside)                            |
+| Nomor halaman             | Arab, di bawah tengah                       |
+| Sampul                    | Putih, logo PENS grayscale                  |
 | Font cover label          | 20pt (teks "PROPOSAL/PROGRES PROYEK AKHIR") |
-| Font cover konten         | 18pt (judul, nama, dll.)              |
+| Font cover konten         | 18pt (judul, nama, dll.)                    |
 
 ---
 
@@ -411,5 +412,14 @@ Jangan mengubah atau menghapus isi `assets/pens/` karena berisi logo resmi.
 - **Jangan compile file selain `main_*.tex`.**
 - Penomoran gambar, tabel, dan persamaan per-bab (contoh: Gambar 3.1).
 - Untuk kutipan panjang (>2 baris), gunakan `\begin{kutipanpanjang}...\end{kutipanpanjang}`.
-- Halaman kosong pada Buku PA otomatis diberi teks *"Halaman ini sengaja dikosongkan"*.
+- Halaman kosong pada Buku PA otomatis diberi teks _"Halaman ini sengaja dikosongkan"_.
 - Jika pernah compile manual (bukan via `make`), jalankan `make clean` sebelum compile berikutnya agar file cache tidak mengotori root.
+
+## License and Copyright
+
+The code for this template is released under the **MIT License** (see the `LICENSE` file for the full text).
+
+**Important Note for Students:**
+The open-source license applies **only to the structural template files** (such as the `.cls`, `.sty`, and skeleton `.tex` files) provided in this repository.
+
+**You retain full copyright over your actual thesis.** The text, research, data, images, and any original content you generate while using this template are entirely your own intellectual property (or belong to your university, depending on your institutional guidelines). Using this template does not legally obligate you to open-source or publicly share your final thesis document.
