@@ -51,6 +51,16 @@
 [\SelaraskanIndentAsli{\thesection}]
 \titlespacing*{\section}{0pt}{12pt}{12pt}
 
+% ── Subsubsection: indent normal, tanpa bintang (khusus Progres) ──
+% Tanpa * → paragraf pertama langsung pakai \parindent = 0.75cm,
+% sama seperti paragraf-paragraf berikutnya. Konsisten, tanpa hack.
+\titleformat{\subsubsection}
+{\fontsize{12}{14}\bfseries}
+{}
+{0pt}
+{}
+\titlespacing{\subsubsection}{\parindent}{3pt}{2pt}
+
 \captionsetup[figure]{font=normalsize}
 \captionsetup[table]{font=normalsize}
 \SetTblrStyle{caption-tag}{font=\normalsize\itshape}
