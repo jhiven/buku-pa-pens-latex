@@ -18,10 +18,10 @@
 
 % ── Persamaan Matematika ─────────────────────────────────────
 \setlength{\mathindent}{10mm}
-\setlength{\abovedisplayskip}{-15pt}
-\setlength{\belowdisplayskip}{0pt}
-\setlength{\abovedisplayshortskip}{0pt}
-\setlength{\belowdisplayshortskip}{0pt}
+\setlength{\abovedisplayskip}{12pt}
+\setlength{\belowdisplayskip}{12pt}
+\setlength{\abovedisplayshortskip}{12pt}
+\setlength{\belowdisplayshortskip}{12pt}
 
 % Nomor persamaan dicetak tebal-miring
 \makeatletter
@@ -34,7 +34,7 @@
 {BAB \thechapter}
 {0pt}
 {}
-\titlespacing*{\chapter}{0pt}{0pt}{18pt}
+\titlespacing*{\chapter}{0pt}{-20pt}{18pt}
 
 % ── Auto-selaraskan indentasi paragraf pertama dengan huruf judul (bukan nomor) ──
 \newsavebox{\KotakLabelJudul}
@@ -55,7 +55,7 @@
 {1em}
 {}
 [\SelaraskanIndentAsli{\thesection}]
-\titlespacing*{\section}{0pt}{15pt}{3pt}
+\titlespacing*{\section}{0pt}{15pt}{0pt}
 
 % ── Format Judul Sub-subbab (Subsection) ─────────────────────
 \titleformat{\subsection}
@@ -72,13 +72,14 @@
 \setcounter{tocdepth}{2}
 
 % ── Format Judul Sub-sub-subbab (Subsubsection) ──────────────
+% Tanpa nomor (secnumdepth=2) — heading ringan, spacing kecil.
+% Label dikosongkan, sep 0pt, left=\parindent agar indent konsisten.
 \titleformat{\subsubsection}
 {\fontsize{12}{14}\bfseries}
-{\thesubsubsection}
-{1em}
 {}
-[\SelaraskanIndentAsli{\thesubsubsection}]
-\titlespacing*{\subsubsection}{0pt}{3pt}{2pt}
+{0pt}
+{}
+\titlespacing*{\subsubsection}{\parindent}{3pt}{2pt}
 
 % ── Caption Gambar ───────────────────────────────────────────
 \captionsetup[figure]{
@@ -195,9 +196,9 @@
 \renewcommand{\cftlottitlefont}{\hfill\fontsize{14}{17}\bfseries\MakeUppercase}
 \renewcommand{\cftafterlottitle}{\hfill\null}
 
-\setlength{\cftbeforetoctitleskip}{0pt}
-\setlength{\cftbeforeloftitleskip}{0pt}
-\setlength{\cftbeforelottitleskip}{0pt}
+\setlength{\cftbeforetoctitleskip}{-20pt}
+\setlength{\cftbeforeloftitleskip}{-20pt}
+\setlength{\cftbeforelottitleskip}{-20pt}
 \setlength{\cftaftertoctitleskip}{12pt}
 \setlength{\cftafterloftitleskip}{12pt}
 \setlength{\cftafterlottitleskip}{12pt}
@@ -209,7 +210,7 @@
 \addtolength{\cfttabnumwidth}{2.5em}
 
 % ── Titik-titik di Daftar Isi ────────────────────────────────
-\renewcommand{\cftdotsep}{1.5} % Rapat (default 4.5)
+\renewcommand{\cftdotsep}{0.5}
 
 % ── Spasi Konsisten di Daftar Isi ────────────────────────────
 \setlength{\cftbeforechapskip}{0pt}
@@ -221,7 +222,7 @@
 % ── Font Level Bab: Bold ─────────────────────────────────────
 \renewcommand{\cftchapfont}{\bfseries}
 \renewcommand{\cftchappagefont}{\bfseries}
-\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}} % Titik untuk bab
+\renewcommand{\cftchapleader}{\bfseries\cftdotfill{\cftdotsep}}
 
 % ── Font Level Section: Normal ───────────────────────────────
 \renewcommand{\cftsecfont}{\normalfont}
@@ -229,11 +230,11 @@
 
 % ── Prefix "BAB" di Daftar Isi ───────────────────────────────
 \renewcommand{\cftchappresnum}{BAB }
-\addtolength{\cftchapnumwidth}{2.5em}
+\addtolength{\cftchapnumwidth}{2.3em}
 
 % ── Jarak (Spasi) Atas/Bawah Gambar dan Tabel ────────────────
-\setlength{\intextsep}{15pt}
-\setlength{\textfloatsep}{15pt}
+\setlength{\intextsep}{12pt}
+\setlength{\textfloatsep}{12pt}
 
 \setlength{\bibsep}{3pt}
 
@@ -271,14 +272,14 @@
 \newcommand{\cleartooddpage}{%
   \clearpage
   \ifodd\c@page\else
-    \hbox{}
-    \vspace*{\fill}
-    \begin{center}
-      \textit{Halaman ini sengaja dikosongkan}
-    \end{center}
-    \vspace{\fill}
-    \thispagestyle{fancy}
-    \newpage
+  \hbox{}
+  \vspace*{\fill}
+  \begin{center}
+    \textit{Halaman ini sengaja dikosongkan}
+  \end{center}
+  \vspace{\fill}
+  \thispagestyle{fancy}
+  \newpage
   \fi
 }
 \makeatother

@@ -61,58 +61,59 @@
 \pagestyle{fancy}
 % Spasi sudah diatur di formats/format_progres.tex — jangan duplikasi di sini
 \ifshowforceoddpage
-  % Sisipkan halaman kosong tanpa nomor di belakang cover
-  \clearpage
-  \hbox{}
-  \vspace*{\fill}
-  \begin{center}\textit{Halaman ini sengaja dikosongkan}\end{center}
-  \vspace{\fill}
-  \thispagestyle{empty}
-  \newpage
+% Sisipkan halaman kosong tanpa nomor di belakang cover
+\clearpage
+\hbox{}
+\vspace*{\fill}
+\begin{center}\textit{Halaman ini sengaja dikosongkan}
+\end{center}
+\vspace{\fill}
+\thispagestyle{empty}
+\newpage
 \fi
 \pagenumbering{roman}
 \setcounter{page}{1}
 
 % Front Matter Opsional
 \ifshowabstrak
-  \ifshowforceoddpage\cleartooddpage\else\clearpage\fi
-  \input{pages/abstrak}
+\ifshowforceoddpage\cleartooddpage\else\clearpage\fi
+\input{pages/abstrak}
 \fi
 
 \ifshowabstract
-  \ifshowforceoddpage\cleartooddpage\else\clearpage\fi
-  \input{pages/abstract}
+\ifshowforceoddpage\cleartooddpage\else\clearpage\fi
+\input{pages/abstract}
 \fi
 
 \ifshowkatapengantar
-  \ifshowforceoddpage\cleartooddpage\else\clearpage\fi
-  \input{pages/kata_pengantar}
+\ifshowforceoddpage\cleartooddpage\else\clearpage\fi
+\input{pages/kata_pengantar}
 \fi
 
 \ifshowdaftarisi
-  \ifshowforceoddpage\cleartooddpage\else\clearpage\fi
-  \begingroup
-    \renewcommand{\addcontentsline}[3]{}
-    \tableofcontents
-  \endgroup
+\ifshowforceoddpage\cleartooddpage\else\clearpage\fi
+\begingroup
+\renewcommand{\addcontentsline}[3]{}
+\tableofcontents
+\endgroup
 \fi
 
 \ifshowdaftargambar
-  \ifshowforceoddpage\cleartooddpage\else\clearpage\fi
-  \begingroup
-  \renewcommand*{\addvspace}[1]{}
-  \listoffigures
-  \endgroup
-  \addcontentsline{toc}{chapter}{DAFTAR GAMBAR}
+\ifshowforceoddpage\cleartooddpage\else\clearpage\fi
+\begingroup
+\renewcommand*{\addvspace}[1]{}
+\listoffigures
+\endgroup
+\addcontentsline{toc}{chapter}{DAFTAR GAMBAR}
 \fi
 
 \ifshowdaftartabel
-  \ifshowforceoddpage\cleartooddpage\else\clearpage\fi
-  \begingroup
-  \renewcommand*{\addvspace}[1]{}
-  \listoftables
-  \endgroup
-  \addcontentsline{toc}{chapter}{DAFTAR TABEL}
+\ifshowforceoddpage\cleartooddpage\else\clearpage\fi
+\begingroup
+\renewcommand*{\addvspace}[1]{}
+\listoftables
+\endgroup
+\addcontentsline{toc}{chapter}{DAFTAR TABEL}
 \fi
 
 % ── Isi Utama: penomoran Arab dimulai dari 1 ─────────────────

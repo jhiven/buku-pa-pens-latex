@@ -56,12 +56,11 @@
 
     % --- Di dalam blok "Dosen Pembimbing" ---
     {\fontsize{16}{20}\bfseries\selectfont DOSEN PEMBIMBING\par}
-    \vspace{0.3cm}
-    {\fontsize{16}{20}\selectfont \NamaPembimbingSatu\par}
-    {\fontsize{16}{20}\selectfont NIP. \NIPPembimbingSatu\par}
-    \vspace{0.3cm}
-    {\fontsize{16}{20}\selectfont \NamaPembimbingDua\par}
-    {\fontsize{16}{20}\selectfont NIP. \NIPPembimbingDua\par}
+    {\fontsize{16}{20}\selectfont \textbf{\NamaPembimbingSatu}\par}
+    {\fontsize{16}{20}\selectfont \textbf{NIP. \NIPPembimbingSatu}\par}
+    \vspace{0.5cm}
+    {\fontsize{16}{20}\selectfont \textbf{\NamaPembimbingDua}\par}
+    {\fontsize{16}{20}\selectfont \textbf{NIP. \NIPPembimbingDua}\par}
 
     % Logika Pembimbing ke-3 (Akademik)
     \ifcsvoid{NamaPembimbingTiga}{}{%
@@ -74,14 +73,14 @@
     \ifcsvoid{NamaPembimbingIndustri}{}{%
       \vspace{0.8cm}
       {\fontsize{16}{20}\bfseries\selectfont PEMBIMBING INDUSTRI\par}
-      \vspace{0.3cm}
-      {\fontsize{16}{20}\selectfont \NamaPembimbingIndustri\par}
+      {\fontsize{16}{20}\selectfont \textbf{\NamaPembimbingIndustri}\par}
       \ifcsvoid{NIPPembimbingIndustri}{}{%
-        {\fontsize{16}{20}\selectfont NIP. \NIPPembimbingIndustri\par}
+        {\fontsize{16}{20}\selectfont \textbf{NIP. \NIPPembimbingIndustri}\par}
       }
       \ifcsvoid{NamaPerusahaanIndustri}{}{%
-        {\fontsize{16}{20}\selectfont \NamaPerusahaanIndustri\par}
+        {\fontsize{16}{20}\selectfont \textbf{\NamaPerusahaanIndustri}\par}
       }
+
     }
 
     \vspace{1cm}

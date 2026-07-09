@@ -51,6 +51,15 @@
 [\SelaraskanIndentAsli{\thesection}]
 \titlespacing*{\section}{0pt}{12pt}{12pt}
 
+% ── Subsubsection: flush left (mepet margin), tanpa bintang (khusus Proposal) ──
+% Left = 0pt → subsubsection rata kiri sesuai margin, tidak ikut parindent.
+\titleformat{\subsubsection}
+{\fontsize{12}{14}\bfseries}
+{}
+{0pt}
+{}
+\titlespacing{\subsubsection}{0pt}{3pt}{2pt}
+
 \captionsetup[figure]{font=normalsize}
 \captionsetup[table]{font=normalsize}
 \SetTblrStyle{caption-tag}{font=\normalsize\itshape}
