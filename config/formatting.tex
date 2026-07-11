@@ -10,7 +10,7 @@
 \definecolor{penskuning}{RGB}{255, 193, 7} % Kuning/emas garis cover
 
 % ── Indentasi & Paragraf ─────────────────────────────────────
-% \parindent TIDAK diset di sini — tiap dokumen punya nilai sendiri:
+% \parindent TIDAK diset di sini - tiap dokumen punya nilai sendiri:
 %   Buku PA  : 1.27cm (ada di formats/format_buku.tex)
 %   Proposal : 0.75cm (ada di formats/format_proposal.tex)
 %   Progres  : 0.75cm (ada di formats/format_progres.tex)
@@ -72,7 +72,7 @@
 \setcounter{tocdepth}{2}
 
 % ── Format Judul Sub-sub-subbab (Subsubsection) ──────────────
-% Tanpa nomor (secnumdepth=2) — heading ringan, spacing kecil.
+% Tanpa nomor (secnumdepth=2) - heading ringan, spacing kecil.
 % Label dikosongkan, sep 0pt, left=\parindent agar indent konsisten.
 \titleformat{\subsubsection}
 {\fontsize{12}{14}\bfseries}
@@ -107,15 +107,15 @@
 
 % ── Format Default Tabularray ────────────────────────────────
 % Berlaku untuk semua lingkungan tblr dan longtblr
+% row{1} styling TIDAK diset di sini agar Buku PA bisa pakai default sendiri.
+% Proposal & Progres mengoverride via format_proposal.tex / format_progres.tex.
 \SetTblrInner{
   hlines, vlines,                                             % Garis kotak otomatis
-  row{1} = {bg=gray!20, font=\bfseries, halign=c},           % Header: abu-abu, bold, center
   rowhead = 1,                                               % Ulangi header jika tabel terpotong halaman
 }
 
 \SetTblrInner[longtblr]{
   hlines, vlines,
-  row{1} = {bg=gray!20, font=\bfseries, halign=c},
   rowhead = 1,
 }
 
