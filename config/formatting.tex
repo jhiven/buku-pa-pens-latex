@@ -9,6 +9,15 @@
 \definecolor{pensbiru}{RGB}{0, 47, 167}    % Biru PENS (#002FA7)
 \definecolor{penskuning}{RGB}{255, 193, 7} % Kuning/emas garis cover
 
+% ── Nonaktifkan Hyphenation (pemenggalan kata) ──────────────
+% Mencegah LaTeX memotong kata di akhir baris (mis. "Elek-tronika").
+% tolerance=9999 + emergencystretch memberi ruang fleksibel agar
+% LaTeX tidak perlu Overfull saat hyphenation dinonaktifkan.
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+\tolerance=9999
+\emergencystretch=3em
+
 % ── Indentasi & Paragraf ─────────────────────────────────────
 % \parindent TIDAK diset di sini - tiap dokumen punya nilai sendiri:
 %   Buku PA  : 1.27cm (ada di formats/format_buku.tex)
