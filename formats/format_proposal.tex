@@ -9,13 +9,13 @@
 % Geometri: single-sided, margin PASPE-2022
 \geometry{
   a4paper,
-  top    = 2.5cm,
-  bottom = 2.5cm,
-  left   = 3.0cm,
-  right  = 2.5cm
+  top    = 2.54cm,
+  bottom = 2.54cm,
+  left   = 2.54cm,
+  right  = 2.54cm
 }
 
-% Spasi Baris (1.15 — lebih kompak dari Buku PA yang pakai 1.5)
+% Spasi Baris (1.15 - lebih kompak dari Buku PA yang pakai 1.5)
 \setstretch{1.15}
 
 % Indentasi Paragraf (lebih kecil dari Buku PA)
@@ -50,6 +50,7 @@
 {}
 [\SelaraskanIndentAsli{\thesection}]
 \titlespacing*{\section}{0pt}{12pt}{12pt}
+\titlespacing*{\subsection}{0pt}{12pt}{12pt}
 
 % ── Subsubsection: flush left (mepet margin), tanpa bintang (khusus Proposal) ──
 % Left = 0pt → subsubsection rata kiri sesuai margin, tidak ikut parindent.
@@ -64,6 +65,11 @@
 \captionsetup[table]{font=normalsize}
 \SetTblrStyle{caption-tag}{font=\normalsize\itshape}
 \SetTblrStyle{caption-text}{font=\normalsize\itshape}
+
+% Override header tabel: abu-abu, bold, center (khusus Proposal)
+% Tidak diset di config/formatting.tex agar Buku PA tidak ikut.
+\SetTblrInner{row{1} = {bg=gray!20, font=\bfseries, halign=c}}
+\SetTblrInner[longtblr]{row{1} = {bg=gray!20, font=\bfseries, halign=c}}
 
 \renewcommand{\cfttoctitlefont}{\hfill\fontsize{12}{14}\bfseries\MakeUppercase}
 \renewcommand{\cftloftitlefont}{\hfill\fontsize{12}{14}\bfseries\MakeUppercase}
