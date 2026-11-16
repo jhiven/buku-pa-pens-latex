@@ -269,6 +269,7 @@ secara otomatis sehingga root project selalu bersih.
 | Bab 4-5                    |        -         |        Ya        |          Ya           |
 | Lampiran                   |        -         |        Ya        |          Ya           |
 | Sistematika Bab 4-5        |        -         |        Ya        |          Ya           |
+| Ukuran kertas              |        A4        |        A4        |          A4           |
 | Cetak                      | 1 muka (oneside) | 1 muka (oneside) | Bolak-balik (twoside) |
 | Margin kiri                |      3,0 cm      |      3,0 cm      |    4,0 cm (jilid)     |
 | Margin atas/bawah/kanan    |      2,5 cm      |      2,5 cm      |        3,0 cm         |
