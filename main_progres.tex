@@ -15,6 +15,10 @@
 % ============================================================
 % KONFIGURASI OPSIONAL: Uncomment untuk mengaktifkan
 % ============================================================
+% V1 (default PENS) = semua off. Untuk V2 (abstrak + daftar isi/
+% gambar/tabel + halaman ganjil) cukup jalankan `make progres-v2`;
+% preset-nya ada di config/preset_v2.tex.
+%
 % Front matter (default semua off):
 % \showabstraktrue         % Tampilkan Abstrak Bahasa Indonesia
 % \showabstracttrue        % Tampilkan Abstract Bahasa Inggris
@@ -30,8 +34,11 @@
 \input{config/variables}
 \input{config/toggles}
 
-% Override toggle SETELAH config/toggles (aktifkan jika diperlukan)
-% \proposalfalse -- progres tidak pakai toggle proposal
+
+% Versi V2 (permintaan beberapa RG): abstrak, daftar isi/gambar/tabel,
+% dan halaman ganjil. V1 (default PENS) tidak terpengaruh.
+% Diaktifkan oleh main_progres_v2.tex (`make progres-v2`).
+\ifdefined\VersiDua \input{config/preset_v2}\fi
 % ── Opsi Front Matter & Layout ─────────────────────────────────
 % Secara default dinonaktifkan. Hapus tanda % (uncomment) pada
 % baris di bawah ini untuk mengaktifkan fitur yang diinginkan.
@@ -45,6 +52,7 @@
 % \showforceoddpagetrue    % Paksa setiap konten baru ke halaman ganjil
 
 \input{config/packages}
+\input{config/fonts}         % ukuran font per peran
 \input{config/formatting}       % base layer: aturan shared
 \input{formats/format_progres}  % per-dokumen: geometry + spacing
 
@@ -138,6 +146,7 @@
 \bibliography{refs/references}
 
 % Lampiran
+\ifshowforceoddpage\cleartooddpage\else\clearpage\fi
 \input{pages/lampiran}
 
 %============================================================

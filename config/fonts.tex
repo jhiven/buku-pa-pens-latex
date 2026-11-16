@@ -1,0 +1,51 @@
+%============================================================
+% UKURAN FONT
+% Semua ukuran font template ada di sini. Ubah satu baris,
+% berlaku di semua halaman yang memakai peran tersebut.
+%
+% Format: \fontsize{ukuran huruf}{jarak baris}\selectfont (pt)
+% Nilai di bawah adalah ukuran Buku PA. Proposal & Progres
+% meng-override sebagian lewat \renewcommand di
+% formats/format_proposal.tex dan formats/format_progres.tex.
+%
+% Di-input setelah config/packages.tex dan sebelum
+% config/formatting.tex di setiap main_*.tex.
+%============================================================
+
+% ── Judul Isi Dokumen (Buku PA; Proposal/Progres: 12pt) ──────
+\newcommand{\FontJudulBab}{\fontsize{14}{17}\selectfont}           % BAB n + judul bab
+\newcommand{\FontJudulSubbab}{\fontsize{14}{17}\selectfont}        % 1.1 (section)
+\newcommand{\FontJudulSubSubbab}{\fontsize{12}{14}\selectfont}     % 1.1.1 (subsection)
+\newcommand{\FontJudulSubSubSubbab}{\fontsize{12}{14}\selectfont}  % tanpa nomor (subsubsection)
+\newcommand{\FontJudulDaftar}{\fontsize{14}{17}\selectfont}        % DAFTAR ISI / GAMBAR / TABEL
+\newcommand{\FontKutipanPanjang}{\fontsize{10}{12}\selectfont}     % lingkungan kutipanpanjang
+\newcommand{\FontSumber}{\fontsize{12}{15}\selectfont}             % "Sumber: ..." di bawah gambar/tabel
+
+% ── Cover Buku PA (formats/cover_buku.tex) ───────────────────
+\newcommand{\FontCoverBukuLabel}{\fontsize{20}{24}\selectfont}     % "PROYEK AKHIR"
+\newcommand{\FontCoverBukuJudul}{\fontsize{18}{20}\selectfont}     % judul PA
+\newcommand{\FontCoverBukuIsi}{\fontsize{16}{20}\selectfont}       % nama, NRP, pembimbing, prodi
+
+% ── Halaman Judul Dalam Buku PA (formats/halaman_judul.tex) ──
+\newcommand{\FontJudulDalamLabel}{\fontsize{20}{0}\selectfont}     % "PROYEK AKHIR"
+\newcommand{\FontJudulDalamJudul}{\fontsize{18}{20}\selectfont}    % judul PA
+\newcommand{\FontJudulDalamIsi}{\fontsize{16}{20}\selectfont}      % nama, NRP, pembimbing, prodi
+
+% ── Halaman Pengesahan (formats/pengesahan.tex) ──────────────
+\newcommand{\FontPengesahanLabel}{\fontsize{20}{0}\selectfont}     % "HALAMAN PENGESAHAN"
+\newcommand{\FontPengesahanJudul}{\fontsize{18}{16}\selectfont}    % judul PA
+\newcommand{\FontPengesahanIsi}{\fontsize{14}{17}\selectfont}      % isi & tabel tanda tangan
+
+% ── Halaman Pernyataan (orisinalitas, hak cipta) ─────────────
+\newcommand{\FontPernyataanLabel}{\fontsize{20}{10}\selectfont}    % judul halaman pernyataan
+\newcommand{\FontPernyataanIsi}{\fontsize{12}{15}\selectfont}      % isi pernyataan orisinalitas
+
+% ── Cover Proposal & Progres (formats/cover_proposal|progres.tex) ──
+\newcommand{\FontCoverRingkasLabel}{\fontsize{20}{24}\selectfont}       % "PROPOSAL/PROGRES PROYEK AKHIR"
+\newcommand{\FontCoverRingkasIsi}{\fontsize{18}{22}\selectfont}         % judul, nama, NRP, prodi
+\newcommand{\FontCoverRingkasPembimbing}{\fontsize{18}{20}\selectfont}  % nama & NIP pembimbing
+
+% Catatan: label 20pt memakai jarak baris berbeda (24pt di cover,
+% 0pt di halaman judul & pengesahan, 10pt di halaman pernyataan).
+% Nilai ini dipertahankan apa adanya agar hasil PDF tidak berubah.
+% Jarak baris hanya berpengaruh jika judul tersebut lebih dari 1 baris.

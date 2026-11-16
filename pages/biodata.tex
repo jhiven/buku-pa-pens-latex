@@ -1,0 +1,36 @@
+%============================================================
+% HALAMAN BIODATA PENULIS (Buku PA)
+% Letakkan foto formal di assets/foto_penulis.jpg.
+% Jika file foto belum ada, ditampilkan kotak placeholder 3x4.
+%============================================================
+\cleardoublepage
+\chapter*{BIODATA PENULIS}
+\addcontentsline{toc}{chapter}{BIODATA PENULIS}
+\thispagestyle{fancy}
+
+\begin{center}
+  \IfFileExists{assets/foto_penulis.jpg}{%
+    \includegraphics[width=3.2cm]{assets/foto_penulis.jpg}%
+  }{%
+    \fbox{\parbox[c][4.27cm][c]{3.2cm}{\centering\small Foto 3$\times$4}}%
+  }
+\end{center}
+
+\vspace{0.7cm}
+\noindent
+\begin{tabular}{@{}p{4cm} l p{9cm}@{}}
+  Nama                  & : & \NamaMahasiswa \\
+  Tempat, Tanggal Lahir & : & Kota, DD Bulan YYYY \\
+  Alamat                & : & Alamat lengkap \\
+  Jenis Kelamin         & : & Laki-laki / Perempuan \\
+  Email                 & : & nama@email.com \\
+\end{tabular}
+
+\vspace{0.7cm}
+\noindent Riwayat Pendidikan:
+\begin{itemize}
+  \setlength{\itemsep}{0pt}
+  \item (YYYY -- YYYY) Politeknik Elektronika Negeri Surabaya
+  \item (YYYY -- YYYY) Nama SMA/SMK/MA
+  \item (YYYY -- YYYY) Nama SMP/MTs
+\end{itemize}

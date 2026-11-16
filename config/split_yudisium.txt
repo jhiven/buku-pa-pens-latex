@@ -1,0 +1,19 @@
+# Rentang halaman untuk `make split` (berkas yudisium / Digilib).
+# Format: Nama_File.pdf:HalamanAwal:HalamanAkhir
+# Pakai nomor halaman FISIK di PDF hasil `make digilib`
+# (lihat nomor halaman di PDF viewer, bukan nomor yang tercetak).
+# Hapus tanda '#' di depan baris yang ingin dipotong, lalu sesuaikan angkanya.
+
+# 01_Cover.pdf:1:2
+# 02_Pengesahan.pdf:3:3
+# 03_Abstrak_ID.pdf:6:7
+# 04_Abstract_EN.pdf:8:8
+# 05_Kata_Pengantar.pdf:9:10
+# 06_Daftar_Isi.pdf:11:13
+# 07_Bab_I.pdf:17:23
+# 08_Bab_II.pdf:24:37
+# 09_Bab_III.pdf:38:68
+# 10_Bab_IV.pdf:69:101
+# 11_Bab_V.pdf:102:105
+# 12_Daftar_Pustaka.pdf:106:112
+# 13_Biodata_Penulis.pdf:113:113
