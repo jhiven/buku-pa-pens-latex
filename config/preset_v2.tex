@@ -1,0 +1,19 @@
+%============================================================
+% PRESET V2: PROPOSAL & PROGRES
+% Dipanggil otomatis oleh main_proposal_v2.tex / main_progres_v2.tex
+% (lewat `make proposal-v2` / `make progres-v2`).
+%
+% V1 (default PENS): cover langsung diikuti Bab 1.
+% V2 (permintaan beberapa RG): ada Abstrak, Daftar Isi, Daftar
+% Gambar, Daftar Tabel, dan setiap bagian dimulai di halaman ganjil
+% (halaman kosong "Halaman ini sengaja dikosongkan" bila perlu).
+%
+% Tambahkan toggle lain di sini jika RG meminta, misalnya:
+%   \showabstracttrue       % Abstract (EN)
+%   \showkatapengantartrue  % Kata Pengantar
+%============================================================
+\showabstraktrue
+\showdaftarisitrue
+\showdaftargambartrue
+\showdaftartabeltrue
+\showforceoddpagetrue

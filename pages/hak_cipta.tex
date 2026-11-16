@@ -5,8 +5,14 @@
 \addcontentsline{toc}{chapter}{PERNYATAAN PENGALIHAN HAK CIPTA}
 \thispagestyle{fancy}
 
+\ifhakciptapdf
+% Sisipkan PDF pernyataan yang sudah ditandatangani di atas materai
+% (aktifkan \hakciptapdftrue di config/toggles.tex)
+\includepdf[pages=-, pagecommand={\thispagestyle{fancy}}]{\FileHakCiptaPDF}
+\else
+
 \begin{center}
-  {\fontsize{20}{10}\bfseries PERNYATAAN PENGALIHAN HAK CIPTA\par}
+  {\FontPernyataanLabel\bfseries PERNYATAAN PENGALIHAN HAK CIPTA\par}
 \end{center}
 \vspace{1.5cm}
 
@@ -33,8 +39,9 @@ dari pihak mana pun.
 \begin{flushleft}
   Hormat saya,\\[1cm]
 
-  % Tempel materai di sini sebelum mencetak
-  [Materai]\\[1cm]
+  % Ruang kosong untuk materai & tanda tangan (tempel setelah dicetak)
+  \vspace{2cm}
 
   \underline{\bfseries \NamaMahasiswa}
 \end{flushleft}
+\fi

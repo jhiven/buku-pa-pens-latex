@@ -13,11 +13,6 @@
 \newif\ifshowdaftargambar  \showdaftargambarfalse  % Daftar Gambar
 \newif\ifshowdaftartabel   \showdaftartabelfalse   % Daftar Tabel
 
-% Toggle Tipe Dokumen
-% \proposaltrue  -> kompilasi sebagai Proposal PA (Bab 1-3 saja)
-% \proposalfalse -> kompilasi sebagai Progres PA / Buku PA (Bab 1-5)
-\newif\ifproposal          \proposalfalse
-
 % Toggle Paksa Halaman Ganjil
 % Jika true, setiap bab dan seksi front matter selalu dimulai
 % di halaman ganjil (sisipkan halaman kosong jika perlu).
@@ -31,3 +26,27 @@
 % false -> Proposal / Progres (tanpa Batasan Masalah)
 % Diset true di main_buku.tex sebelum \input{config/toggles}.
 \newif\ifbukupa            \bukupafalse
+
+% ── Toggle Khusus Buku PA ─────────────────────────────────────
+% Aktifkan di main_buku.tex (setelah \input{config/toggles}).
+
+% Sisipkan lembar pengesahan PDF yang sudah ditandatangani,
+% menggantikan halaman pengesahan hasil generate LaTeX.
+\newif\ifpengesahanpdf     \pengesahanpdffalse
+\newcommand{\FilePengesahanPDF}{pages/lembar_pengesahan.pdf}
+
+% Sisipkan PDF pernyataan pengalihan hak cipta yang sudah
+% ditandatangani di atas materai.
+\newif\ifhakciptapdf       \hakciptapdffalse
+\newcommand{\FileHakCiptaPDF}{pages/hak_cipta_materai.pdf}
+
+% Mode Digilib (upload repository / berkas yudisium):
+% true  -> watermark PENS aktif mulai Abstrak, TANPA halaman
+%          "sengaja dikosongkan" (file nanti dipotong per bagian)
+% false -> versi cetak biasa (default)
+% Bisa juga lewat `make digilib` tanpa mengedit file.
+\newif\ifdigilib           \digilibfalse
+
+% Halaman Biodata Penulis di akhir Buku PA (default: tidak ditampilkan).
+% Aktifkan dengan \showbiodatatrue di main_buku.tex.
+\newif\ifshowbiodata       \showbiodatafalse

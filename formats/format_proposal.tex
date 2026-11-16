@@ -36,15 +36,23 @@
 % ============================================================
 % OVERRIDE FONT SIZE: 12pt SEMUA (Heading, Caption, TOC, dll)
 % ============================================================
+% Ukuran font: semua 12pt (nilai default Buku PA ada di config/fonts.tex)
+\renewcommand{\FontJudulBab}{\fontsize{12}{14}\selectfont}
+\renewcommand{\FontJudulSubbab}{\fontsize{12}{14}\selectfont}
+\renewcommand{\FontJudulSubSubbab}{\fontsize{12}{14}\selectfont}
+\renewcommand{\FontJudulSubSubSubbab}{\fontsize{12}{14}\selectfont}
+\renewcommand{\FontJudulDaftar}{\fontsize{12}{14}\selectfont}
+\renewcommand{\FontKutipanPanjang}{\fontsize{12}{14}\selectfont}
+
 \titleformat{\chapter}[display]
-{\centering\fontsize{12}{14}\bfseries}
+{\centering\FontJudulBab\bfseries}
 {BAB \thechapter}
 {0pt}
 {}
 \titlespacing*{\chapter}{0pt}{0pt}{12pt}
 
 \titleformat{\section}
-{\fontsize{12}{14}\bfseries}
+{\FontJudulSubbab\bfseries}
 {\thesection}
 {1em}
 {}
@@ -54,7 +62,7 @@
 % ── Subsubsection: flush left (mepet margin), tanpa bintang (khusus Proposal) ──
 % Left = 0pt → subsubsection rata kiri sesuai margin, tidak ikut parindent.
 \titleformat{\subsubsection}
-{\fontsize{12}{14}\bfseries}
+{\FontJudulSubSubSubbab\bfseries}
 {}
 {0pt}
 {}
@@ -64,21 +72,3 @@
 \captionsetup[table]{font=normalsize}
 \SetTblrStyle{caption-tag}{font=\normalsize\itshape}
 \SetTblrStyle{caption-text}{font=\normalsize\itshape}
-
-\renewcommand{\cfttoctitlefont}{\hfill\fontsize{12}{14}\bfseries\MakeUppercase}
-\renewcommand{\cftloftitlefont}{\hfill\fontsize{12}{14}\bfseries\MakeUppercase}
-\renewcommand{\cftlottitlefont}{\hfill\fontsize{12}{14}\bfseries\MakeUppercase}
-
-\renewenvironment{kutipanpanjang}{%
-  \begin{list}{}{%
-      \setlength{\leftmargin}{10mm}
-      \setlength{\rightmargin}{10mm}
-      \setlength{\topsep}{6pt}
-      \setlength{\itemsep}{0pt}
-      \setlength{\parsep}{0pt}
-    }
-  \item\fontsize{12}{14}\selectfont\ignorespaces
-  }{%
-    \unskip
-  \end{list}
-}

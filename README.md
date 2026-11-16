@@ -118,6 +118,9 @@ buku-pa-pens-latex/
 +-- main_proposal.tex          <- Runner Proposal PA  (compile ini)
 +-- main_progres.tex           <- Runner Progres PA   (compile ini)
 +-- main_buku.tex              <- Runner Buku PA      (compile ini)
++-- main_proposal_v2.tex       <- Wrapper Proposal V2 (dipakai `make proposal-v2`)
++-- main_progres_v2.tex        <- Wrapper Progres V2  (dipakai `make progres-v2`)
++-- main_buku_digilib.tex      <- Wrapper Buku PA Digilib (dipakai `make digilib`)
 +-- Makefile                   <- Build tool
 +-- .latexmkrc                 <- Konfigurasi latexmk (output ke build/)
 |
@@ -126,6 +129,9 @@ buku-pa-pens-latex/
 |   +-- packages.tex           <- Semua package LaTeX yang digunakan
 |   +-- formatting.tex         <- Layout, font, margin, caption, dll.
 |   +-- toggles.tex            <- Boolean switch (front matter opsional, dll.)
+|   +-- fonts.tex              <- Semua ukuran font (satu macro per peran)
+|   +-- preset_v2.tex          <- Kumpulan toggle untuk Proposal/Progres V2
+|   +-- split_yudisium.txt     <- Rentang halaman untuk `make split`
 |
 +-- chapters/                  <- ISI BAB (ditulis 1x, dipakai 3 dokumen)
 |   +-- bab1.tex  bab2.tex  bab3.tex  bab4.tex  bab5.tex
@@ -137,6 +143,7 @@ buku-pa-pens-latex/
 |   +-- orisinalitas.tex       <- Pernyataan Orisinalitas
 |   +-- hak_cipta.tex          <- Pernyataan Pengalihan Hak Cipta
 |   +-- lampiran.tex           <- Lampiran (Progres & Buku PA saja)
+|   +-- biodata.tex            <- Biodata Penulis (Buku PA, opsional: \showbiodatatrue)
 |   +-- sistematika_3bab.tex   <- Sistematika Proposal (Bab 1-3)
 |   +-- sistematika_5bab.tex   <- Sistematika Progres/Buku (Bab 1-5)
 |
@@ -158,11 +165,18 @@ buku-pa-pens-latex/
 |   +-- references.bib         <- Daftar pustaka format BibTeX
 |   +-- IEEEtranN.bst          <- Style sitasi IEEE
 |
++-- scripts/
+|   +-- split_pdf.sh           <- Pemotong PDF per bagian (dipakai `make split`)
+|
 +-- build/                     <- File sementara LaTeX (auto, jangan diedit)
 +-- output/
-    +-- proposal/              <- PDF Proposal PA (dari `make proposal`)
-    +-- progres/               <- PDF Progres PA  (dari `make progres`)
-    +-- buku/                  <- PDF Buku PA     (dari `make buku`)
+    +-- proposal/              <- PDF Proposal PA    (dari `make proposal`)
+    +-- progres/               <- PDF Progres PA     (dari `make progres`)
+    +-- buku/                  <- PDF Buku PA        (dari `make buku`)
+    +-- proposal_v2/           <- PDF Proposal PA V2 (dari `make proposal-v2`)
+    +-- progres_v2/            <- PDF Progres PA V2  (dari `make progres-v2`)
+    +-- digilib/               <- PDF Buku PA Digilib (dari `make digilib`)
+    +-- berkas_yudisium/       <- Potongan PDF       (dari `make split`)
 ```
 
 ---
@@ -176,10 +190,10 @@ mengubah identitas di seluruh dokumen (cover, judul, pengesahan, dll.).
 
 ```latex
 \newcommand{\NamaMahasiswa}{Nama Lengkap Anda}
-\newcommand{\NRP}{3122600052}
+\newcommand{\NRP}{3122600000}
 \newcommand{\JudulPA}{Judul Proyek Akhir Anda}
 \newcommand{\NamaPembimbingSatu}{Dr. Nama Pembimbing, S.T., M.T.}
-\newcommand{\NIPPembimbingSatu}{197404162000032003}
+\newcommand{\NIPPembimbingSatu}{198001012005011001}
 % ... dan seterusnya
 ```
 
@@ -215,9 +229,27 @@ make proposal   # -> output/proposal/Proposal_PA_Nama_NRP_DATETIME.pdf
 make progres    # -> output/progres/Progres_PA_Nama_NRP_DATETIME.pdf
 make buku       # -> output/buku/Buku_PA_Nama_NRP_DATETIME.pdf
 make all        # -> compile ketiganya
+
+make proposal-v2  # -> output/proposal_v2/Proposal_PA_V2_Nama_NRP_DATETIME.pdf
+make progres-v2   # -> output/progres_v2/Progres_PA_V2_Nama_NRP_DATETIME.pdf
+make v2           # -> compile keduanya (V2)
+
+make digilib    # -> output/digilib/Buku_PA_Digilib_Nama_NRP_DATETIME.pdf
+make split      # -> output/berkas_yudisium/*.pdf (potongan per bagian)
+
+make watch                # -> compile ulang otomatis setiap simpan (default: buku)
+make watch DOC=proposal   # -> sama, untuk proposal (atau progres, proposal_v2, progres_v2)
+
 make clean      # -> hapus build/ (file sementara)
 make cleanall   # -> hapus build/ + output/
 ```
+
+`make watch` berguna jika tidak memakai LaTeX Workshop: biarkan berjalan di
+terminal, buka `build/main_<DOC>.pdf` di PDF viewer, dan PDF akan diperbarui
+setiap file `.tex` disimpan. Hentikan dengan `Ctrl+C`.
+
+Lihat [Proposal & Progres: V1 vs V2](#proposal--progres-v1-vs-v2) dan
+[Mode Digilib & Berkas Yudisium](#mode-digilib--berkas-yudisium-buku-pa).
 
 Semua file sementara LaTeX (`.aux`, `.log`, `.bbl`, dll.) masuk ke `build/`
 secara otomatis sehingga root project selalu bersih.
@@ -242,6 +274,33 @@ secara otomatis sehingga root project selalu bersih.
 | Margin atas/bawah/kanan    |      2,5 cm      |      2,5 cm      |        3,0 cm         |
 | Spasi baris                |    1,15 spasi    |    1,15 spasi    |       1,5 spasi       |
 | Indentasi paragraf         |     0,75 cm      |     0,75 cm      |        1,27 cm        |
+| Isi tabel                  |  11pt, spasi 1   |  11pt, spasi 1   |     11pt, spasi 1     |
+| Biodata Penulis            |        -         |        -         |    toggle (off)       |
+
+---
+
+## Proposal & Progres: V1 vs V2
+
+**Kenapa ada V2?** Format default PENS untuk Proposal dan Progres PA adalah
+**V1**: cover langsung diikuti Bab 1, tanpa abstrak, daftar isi, maupun halaman
+kosong. Namun beberapa RG (Research Group) meminta proposal/progres dilengkapi
+abstrak, daftar isi, daftar gambar, daftar tabel, dan halaman kosong agar setiap
+bagian dimulai di halaman ganjil. Untuk kebutuhan itu tersedia **V2**.
+
+> Pakai **V1** kecuali RG atau pembimbing Anda meminta format V2.
+
+|                              | V1 (default PENS)            | V2 (permintaan RG)                   |
+| ---------------------------- | ---------------------------- | ------------------------------------ |
+| Perintah                     | `make proposal`, `make progres` | `make proposal-v2`, `make progres-v2`, `make v2` |
+| Abstrak                      | -                            | Ya                                   |
+| Daftar Isi / Gambar / Tabel  | -                            | Ya                                   |
+| Halaman ganjil               | -                            | Ya: setiap bagian (abstrak, daftar, bab, daftar pustaka, lampiran) mulai di halaman ganjil, dengan halaman _"Halaman ini sengaja dikosongkan"_ bila perlu |
+| Margin, spasi, font, cover   | sama                         | sama                                 |
+
+V2 tidak punya file konten terpisah: isi bab, abstrak, dll. tetap sama. V2 hanya
+menyalakan toggle yang sudah ada, dikumpulkan di [config/preset_v2.tex](config/preset_v2.tex).
+Jika RG Anda juga meminta Abstract (EN) atau Kata Pengantar, tambahkan
+`\showabstracttrue` / `\showkatapengantartrue` di file tersebut.
 
 ---
 
@@ -275,6 +334,43 @@ kosong bertulisan _"Halaman ini sengaja dikosongkan"_ jika diperlukan), tambahka
 
 Buku PA tidak memerlukan ini karena mode `twoside` + `openright` sudah
 menanganinya secara otomatis.
+
+### Opsi Buku PA ([main_buku.tex](main_buku.tex))
+
+```latex
+% \pengesahanpdftrue  % Pakai PDF pengesahan bertanda tangan (pages/lembar_pengesahan.pdf)
+% \hakciptapdftrue    % Pakai PDF hak cipta bermaterai (pages/hak_cipta_materai.pdf)
+% \digilibtrue        % Mode Digilib (atau cukup: make digilib)
+% \showbiodatatrue    % Tampilkan halaman Biodata Penulis di akhir buku
+```
+
+- **Biodata Penulis**: default tidak ditampilkan. Jika diperlukan, aktifkan
+  `\showbiodatatrue` lalu isi `pages/biodata.tex` (foto di `assets/foto_penulis.jpg`).
+
+- **PDF pengesahan / hak cipta**: setelah lembar pengesahan ditandatangani dan
+  pernyataan hak cipta ditempel materai, scan ke PDF, simpan di path di atas
+  (bisa diubah lewat `\FilePengesahanPDF` / `\FileHakCiptaPDF` di
+  `config/toggles.tex`), lalu aktifkan toggle-nya. Halaman hasil generate
+  LaTeX akan diganti dengan PDF tersebut.
+- **Halaman hak cipta** versi LaTeX menyediakan ruang kosong 2 cm untuk materai
+  dan tanda tangan.
+
+### Mode Digilib & Berkas Yudisium (Buku PA)
+
+Untuk upload Digilib / berkas yudisium, Buku PA perlu watermark PENS dan
+dipotong per bagian.
+
+```bash
+make digilib    # Buku PA + watermark (mulai Abstrak), TANPA halaman kosong
+make split      # potong PDF digilib -> output/berkas_yudisium/
+```
+
+1. Jalankan `make digilib`, buka PDF-nya, catat nomor halaman **fisik** setiap bagian.
+2. Isi rentang halaman di [config/split_yudisium.txt](config/split_yudisium.txt)
+   (format `Nama_File.pdf:Awal:Akhir`, hapus `#` di baris yang dipakai).
+3. Jalankan `make split` (butuh Ghostscript / `gs`).
+
+`make buku` (versi cetak) tidak terpengaruh: tanpa watermark, halaman kosong tetap ada.
 
 ---
 
@@ -315,8 +411,9 @@ halaman judul, pengesahan, dan pernyataan akan memperbarui diri secara otomatis.
 | `\NamaPerusahaanIndustri`                    | Diisi jika pembimbing tambahan dari industri |
 | `\NamaProdi`, `\NamaDepartemen`              | Nama program studi dan departemen            |
 | `\NamaKetuaProdi`                            | Nama Ketua Prodi (untuk halaman pengesahan)  |
-| `\TahunLulus`, `\BulanLulus`                 | Tahun dan bulan kelulusan                    |
-| `\Kota`                                      | Kota (default: Surabaya)                     |
+| `\GelarLulus`                                | Gelar yang diperoleh (halaman pengesahan)    |
+| `\TahunLulus`                                | Tahun kelulusan                              |
+| `\TanggalSidang`                             | Kota & tanggal di halaman pernyataan         |
 
 ### Toggle Front Matter ([main_proposal.tex](main_proposal.tex) / [main_progres.tex](main_progres.tex))
 
@@ -344,6 +441,23 @@ Default nonaktif karena Proposal dan Progres dicetak 1 muka. Jika diperlukan
 Setiap bab dan seksi front matter akan dimulai di halaman ganjil, dengan
 halaman kosong bertulisan _"Halaman ini sengaja dikosongkan"_ disisipkan bila perlu.
 
+### Ukuran Font ([config/fonts.tex](config/fonts.tex))
+
+Semua ukuran font ditulis sekali di `config/fonts.tex`, satu macro per
+peruntukan. Jika ada revisi ukuran (misalnya "isi halaman pengesahan jadi
+13pt"), cukup ubah satu baris:
+
+```latex
+\newcommand{\FontPengesahanIsi}{\fontsize{14}{17}\selectfont}  % -> {13}{16}
+```
+
+Macro dibedakan per peran, bukan per angka: judul bab, judul subbab, judul
+daftar isi, dan isi pengesahan sama-sama 14pt tetapi punya macro sendiri,
+sehingga mengubah satu tidak ikut mengubah yang lain. Proposal & Progres
+memakai 12pt untuk judul; override-nya ada di `formats/format_proposal.tex`
+dan `formats/format_progres.tex`. Di konten bab, gunakan `\FontSumber` untuk
+baris "Sumber: ..." di bawah gambar/tabel.
+
 ### Konten Bab (`chapters/` dan `pages/`)
 
 | File                                | Keterangan                                   |
@@ -355,6 +469,7 @@ halaman kosong bertulisan _"Halaman ini sengaja dikosongkan"_ disisipkan bila pe
 | `pages/orisinalitas.tex`            | Pernyataan Orisinalitas                      |
 | `pages/hak_cipta.tex`               | Pernyataan Pengalihan Hak Cipta              |
 | `pages/lampiran.tex`                | Lampiran (Progres dan Buku PA)               |
+| `pages/biodata.tex`                 | Biodata Penulis (Buku PA, default tidak tampil; aktifkan `\showbiodatatrue`); foto di `assets/foto_penulis.jpg` |
 | `pages/sistematika_3bab.tex`        | Isi sistematika untuk Proposal (Bab 1-3)     |
 | `pages/sistematika_5bab.tex`        | Isi sistematika untuk Progres/Buku (Bab 1-5) |
 | `refs/references.bib`               | Daftar referensi BibTeX                      |
@@ -413,6 +528,7 @@ Jangan mengubah atau menghapus isi `assets/pens/` karena berisi logo resmi.
 - Penomoran gambar, tabel, dan persamaan per-bab (contoh: Gambar 3.1).
 - Untuk kutipan panjang (>2 baris), gunakan `\begin{kutipanpanjang}...\end{kutipanpanjang}`.
 - Halaman kosong pada Buku PA otomatis diberi teks _"Halaman ini sengaja dikosongkan"_.
+- Pemenggalan kata (hyphenation) dinonaktifkan dan baris yatim/janda dicegah di ketiga dokumen.
 - Jika pernah compile manual (bukan via `make`), jalankan `make clean` sebelum compile berikutnya agar file cache tidak mengotori root.
 
 ## License and Copyright

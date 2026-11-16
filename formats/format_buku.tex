@@ -16,8 +16,10 @@
   outer  = 3cm    % Margin luar
 }
 
-% ── Spasi Baris (Rev05: 1.5) ──────────────────────────────────
-% Temporary latex's spacing 1.5 for cover
+% ── Spasi Baris ───────────────────────────────────────────────
+% \onehalfspacing di sini HANYA berlaku untuk cover, halaman judul,
+% dan pengesahan. Mulai halaman prelim, main_buku.tex mengganti
+% dengan \setstretch{1.5} (setara visual spasi 1.5 MS Word).
 \onehalfspacing
 
 % ── Indentasi Paragraf (Rev05: 1.27cm) ───────────────────────
@@ -30,3 +32,9 @@
 % selaras dengan posisi teks subsubsection (yang juga mulai di \parindent).
 % Solusi: override dengan \titlespacing TANPA bintang.
 \titlespacing{\subsubsection}{\parindent}{3pt}{2pt}
+
+% ── Jarak Atas/Bawah Gambar dan Tabel (khusus Buku PA) ───────
+% Base layer (config/formatting.tex) memakai 12pt; Buku PA final
+% yang sudah lolos koreksi dosen memakai 15pt.
+\setlength{\intextsep}{15pt}
+\setlength{\textfloatsep}{15pt}

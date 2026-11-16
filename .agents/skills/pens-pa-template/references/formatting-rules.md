@@ -11,6 +11,12 @@ in the PENS PA template. Follow these exactly — the formatting config in
 Use `tblr` from `tabularray` for all tables. The global `\SetTblrInner`
 in `formatting.tex` automatically applies: box lines, bold centered header
 row with gray background, and header repetition across page breaks.
+Table cell content is automatically set to `\small` (≈11pt) with single line
+spacing via `\AddToHook{env/tblr/begin}` — do **not** add `\small` or
+`\linespread` manually inside tables.
+
+Hyphenation is disabled globally and club/widow lines are prevented
+(`config/formatting.tex`); do not re-enable them per paragraph.
 
 ### Standard table (no external source)
 

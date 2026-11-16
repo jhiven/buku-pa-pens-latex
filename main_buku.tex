@@ -16,7 +16,17 @@
 % ── Aktifkan khusus Buku PA ───────────────────────────────────
 \bukupatrue   % Tampilkan Batasan Masalah di Bab 1
 
+% ── Opsi Buku PA (uncomment untuk mengaktifkan) ───────────────
+% \pengesahanpdftrue  % Pakai PDF pengesahan bertanda tangan (pages/lembar_pengesahan.pdf)
+% \hakciptapdftrue    % Pakai PDF hak cipta bermaterai (pages/hak_cipta_materai.pdf)
+% \digilibtrue        % Mode Digilib: watermark + tanpa halaman kosong (atau: make digilib)
+% \showbiodatatrue    % Tampilkan halaman Biodata Penulis di akhir buku (pages/biodata.tex)
+
+% `make digilib` meng-compile main_buku_digilib.tex yang mendefinisikan \ModeDigilib
+\ifdefined\ModeDigilib \digilibtrue\fi
+
 \input{config/packages}
+\input{config/fonts}         % ukuran font per peran
 \input{config/formatting}     % base layer: aturan shared
 \input{formats/format_buku}   % per-dokumen: geometry + spacing
 
@@ -29,8 +39,13 @@
 \input{formats/halaman_judul}
 \input{formats/pengesahan}
 
-% NOTE: terdapat perbedaan perhitungan spacing 1.5 antara latex dan MS Word.
-%       jadi, kita tidak bisa pake \onehalfspacing
+% ── Spasi Baris 1.5 (mulai halaman prelim sampai akhir) ───────
+% Cover, halaman judul, dan pengesahan di atas memakai \onehalfspacing
+% (diset di formats/format_buku.tex). Mulai dari sini dipakai
+% \setstretch{1.5}, karena \onehalfspacing LaTeX (±18pt per baris)
+% jauh lebih rapat dari spasi 1.5 MS Word (±20.7pt).
+% \setstretch{1.5} menghasilkan ±21.75pt (sama dengan Buku PA final
+% yang sudah lolos koreksi dosen).
 \setstretch{1.5}
 
 % ── Halaman Prelim (penomoran romawi kecil) ──────────────────
@@ -41,6 +56,10 @@
 \makeatletter\@mainmattertrue\makeatother
 \input{pages/orisinalitas}
 \input{pages/hak_cipta}
+
+% Mode Digilib: watermark aktif mulai Abstrak (tidak berefek jika \digilibfalse)
+\cleardoublepage
+\AktifkanWatermarkDigilib
 
 \input{pages/abstrak}
 \input{pages/abstract}
@@ -86,6 +105,11 @@
 
 % ── Lampiran ─────────────────────────────────────────────────
 \input{pages/lampiran}
+
+% ── Biodata Penulis (opsional, default tidak ditampilkan) ────
+\ifshowbiodata
+\input{pages/biodata}
+\fi
 
 %============================================================
 \end{document}

@@ -10,7 +10,7 @@
   \sbox{\ProgresLabelBox}{%
     \begin{minipage}[b]{0.60\textwidth}%
       \raggedleft%
-      {\fontsize{20}{24}\bfseries\selectfont PROGRES\\[2pt]PROYEK AKHIR\par}%
+      {\FontCoverRingkasLabel\bfseries PROGRES\\[2pt]PROYEK AKHIR\par}%
     \end{minipage}%
   }
   \settototalheight{\ProgresLabelH}{\usebox{\ProgresLabelBox}}
@@ -27,41 +27,41 @@
 
   % Judul Proyek Akhir
   \begin{center}
-    {\fontsize{18}{22}\bfseries\selectfont\MakeUppercase{\JudulPA}\par}
+    {\FontCoverRingkasIsi\bfseries\MakeUppercase{\JudulPA}\par}
   \end{center}
 
   \vfill
 
   % Identitas & Pembimbing
   \begin{center}
-    {\fontsize{18}{22}\bfseries\selectfont \NamaMahasiswa\par}
-    {\fontsize{18}{22}\selectfont NRP. \NRP\par}
+    {\FontCoverRingkasIsi\bfseries \NamaMahasiswa\par}
+    {\FontCoverRingkasIsi NRP. \NRP\par}
 
     \vspace{0.3cm}
 
-    {\fontsize{18}{22}\bfseries\selectfont DOSEN PEMBIMBING\par}
+    {\FontCoverRingkasIsi\bfseries DOSEN PEMBIMBING\par}
     \vspace{0.15cm}
-    {\fontsize{18}{20}\selectfont \NamaPembimbingSatu\par}
-    {\fontsize{18}{20}\selectfont NIP. \NIPPembimbingSatu\par}
+    {\FontCoverRingkasPembimbing \NamaPembimbingSatu\par}
+    {\FontCoverRingkasPembimbing NIP. \NIPPembimbingSatu\par}
     
     \vspace{0.35cm}
-    {\fontsize{18}{20}\selectfont \NamaPembimbingDua\par}
-    {\fontsize{18}{20}\selectfont NIP. \NIPPembimbingDua\par}
+    {\FontCoverRingkasPembimbing \NamaPembimbingDua\par}
+    {\FontCoverRingkasPembimbing NIP. \NIPPembimbingDua\par}
 
     \ifcsvoid{NamaPembimbingTiga}{}{%
       \vspace{0.35cm}
-      {\fontsize{18}{20}\selectfont \NamaPembimbingTiga\par}
-      {\fontsize{18}{20}\selectfont NIP. \NIPPembimbingTiga\par}
+      {\FontCoverRingkasPembimbing \NamaPembimbingTiga\par}
+      {\FontCoverRingkasPembimbing NIP. \NIPPembimbingTiga\par}
     }
 
     \ifcsvoid{NamaPembimbingIndustri}{}{%
       \vspace{0.35cm}
-      {\fontsize{18}{20}\selectfont \NamaPembimbingIndustri\par}
+      {\FontCoverRingkasPembimbing \NamaPembimbingIndustri\par}
       \ifcsvoid{NIPPembimbingIndustri}{}{%
-        {\fontsize{18}{20}\selectfont NIP. \NIPPembimbingIndustri\par}
+        {\FontCoverRingkasPembimbing NIP. \NIPPembimbingIndustri\par}
       }
       \ifcsvoid{NamaPerusahaanIndustri}{}{%
-        {\fontsize{18}{20}\selectfont \NamaPerusahaanIndustri\par}
+        {\FontCoverRingkasPembimbing \NamaPerusahaanIndustri\par}
       }
     }
   \end{center}
@@ -70,11 +70,11 @@
 
   % Program Studi & Institusi
   \begin{center}
-    {\fontsize{18}{22}\bfseries\selectfont PROGRAM STUDI SARJANA TERAPAN\par}
-    {\fontsize{18}{22}\bfseries\selectfont \MakeUppercase{\NamaProdi}\par}
-    {\fontsize{18}{22}\bfseries\selectfont \MakeUppercase{\NamaDepartemen}\par}
-    {\fontsize{18}{22}\bfseries\selectfont POLITEKNIK ELEKTRONIKA NEGERI SURABAYA\par}
-    {\fontsize{18}{22}\bfseries\selectfont \TahunLulus\par}
+    {\FontCoverRingkasIsi\bfseries PROGRAM STUDI SARJANA TERAPAN\par}
+    {\FontCoverRingkasIsi\bfseries \MakeUppercase{\NamaProdi}\par}
+    {\FontCoverRingkasIsi\bfseries \MakeUppercase{\NamaDepartemen}\par}
+    {\FontCoverRingkasIsi\bfseries POLITEKNIK ELEKTRONIKA NEGERI SURABAYA\par}
+    {\FontCoverRingkasIsi\bfseries \TahunLulus\par}
   \end{center}
 
   \restoregeometry

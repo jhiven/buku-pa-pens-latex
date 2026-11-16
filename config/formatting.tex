@@ -30,7 +30,7 @@
 
 % ── Format Judul Bab ─────────────────────────────────────────
 \titleformat{\chapter}[display]
-{\centering\fontsize{14}{17}\bfseries}
+{\centering\FontJudulBab\bfseries}
 {BAB \thechapter}
 {0pt}
 {}
@@ -50,7 +50,7 @@
 
 % ── Format Judul Subbab (Section) ────────────────────────────
 \titleformat{\section}
-{\fontsize{14}{17}\bfseries}
+{\FontJudulSubbab\bfseries}
 {\thesection}
 {1em}
 {}
@@ -59,7 +59,7 @@
 
 % ── Format Judul Sub-subbab (Subsection) ─────────────────────
 \titleformat{\subsection}
-{\fontsize{12}{14}\bfseries}
+{\FontJudulSubSubbab\bfseries}
 {\thesubsection}
 {1em}
 {}
@@ -75,7 +75,7 @@
 % Tanpa nomor (secnumdepth=2) — heading ringan, spacing kecil.
 % Label dikosongkan, sep 0pt, left=\parindent agar indent konsisten.
 \titleformat{\subsubsection}
-{\fontsize{12}{14}\bfseries}
+{\FontJudulSubSubSubbab\bfseries}
 {}
 {0pt}
 {}
@@ -119,6 +119,13 @@
   rowhead = 1,
 }
 
+% ── Isi Tabel: 11pt, Spasi 1 ─────────────────────────────────
+% Isi sel tblr/longtblr memakai \small (±11pt pada dokumen 12pt) dan
+% spasi 1, tidak ikut spasi teks isi (1.5 / 1.15). Berlaku untuk
+% Buku PA, Proposal, dan Progres. Caption tabel tidak terpengaruh.
+\AddToHook{env/tblr/begin}{\small\linespread{1}\selectfont}
+\AddToHook{env/longtblr/begin}{\small\linespread{1}\selectfont}
+
 % ── Kustomisasi Khusus longtblr ──────────────────────────────
 % 1. Menyamakan format caption longtblr dengan tabel biasa (Italic, 11pt, rata tengah)
 \DefTblrTemplate{caption-sep}{default}{\space}   % Mengganti titik dua (:) menjadi spasi
@@ -161,7 +168,7 @@
       \setlength{\itemsep}{0pt}
       \setlength{\parsep}{0pt}
     }
-  \item\fontsize{10}{12}\selectfont\ignorespaces
+  \item\FontKutipanPanjang\ignorespaces
   }{%
     \unskip
   \end{list}
@@ -187,13 +194,13 @@
 \renewcommand{\chaptername}{BAB}
 
 % ── Judul Daftar Isi/Gambar/Tabel: 14pt, Bold, Center ────────
-\renewcommand{\cfttoctitlefont}{\hfill\fontsize{14}{17}\bfseries\MakeUppercase}
+\renewcommand{\cfttoctitlefont}{\hfill\FontJudulDaftar\bfseries\MakeUppercase}
 \renewcommand{\cftaftertoctitle}{\hfill\null}
 
-\renewcommand{\cftloftitlefont}{\hfill\fontsize{14}{17}\bfseries\MakeUppercase}
+\renewcommand{\cftloftitlefont}{\hfill\FontJudulDaftar\bfseries\MakeUppercase}
 \renewcommand{\cftafterloftitle}{\hfill\null}
 
-\renewcommand{\cftlottitlefont}{\hfill\fontsize{14}{17}\bfseries\MakeUppercase}
+\renewcommand{\cftlottitlefont}{\hfill\FontJudulDaftar\bfseries\MakeUppercase}
 \renewcommand{\cftafterlottitle}{\hfill\null}
 
 \setlength{\cftbeforetoctitleskip}{-20pt}
@@ -238,13 +245,49 @@
 
 \setlength{\bibsep}{3pt}
 
+% ── Pemenggalan Kata & Baris Yatim/Janda ─────────────────────
+% Nonaktifkan hyphenation (kata tidak dipotong di akhir baris, mis.
+% "Elek-tronika"). tolerance + emergencystretch memberi ruang agar
+% tidak terjadi Overfull saat hyphenation dimatikan.
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+\tolerance=9999
+\emergencystretch=3em
+
+% Cegah satu baris paragraf tertinggal sendirian di bawah halaman
+% (club/yatim) atau di atas halaman berikutnya (widow/janda).
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+
+% ── Watermark PENS (Mode Digilib) ────────────────────────────
+% Hook dipasang sekali; tampil/tidaknya dicek di SETIAP halaman:
+% hanya jika \digilibtrue DAN watermark sudah diaktifkan lewat
+% \AktifkanWatermarkDigilib (di main_buku.tex, mulai Abstrak).
+\newif\ifwatermarkon
+\watermarkonfalse
+\AddToShipoutPictureFG{%
+  \ifdigilib\ifwatermarkon
+    \AtPageCenter{%
+      \tikz[overlay]\node[opacity=0.3, inner sep=0pt]{%
+        \includegraphics[width=\paperwidth,height=\paperheight]{assets/pens/watermark_pens_a4}%
+      };%
+    }%
+  \fi\fi
+}
+\newcommand{\AktifkanWatermarkDigilib}{\global\watermarkontrue}
+\newcommand{\NonaktifkanWatermarkDigilib}{\global\watermarkonfalse}
+
 % ── Halaman Kosong ───────────────────────────────────────────
-% Halaman kosong pada cetak bolak-balik diberi keterangan
+% Halaman kosong pada cetak bolak-balik diberi keterangan.
+% Mode Digilib: tanpa halaman kosong (cukup \clearpage), karena
+% file akan dipotong per bagian untuk berkas yudisium.
 \makeatletter
 \newif\if@mainmatter
 \@mainmatterfalse
 \def\cleardoublepage{%
   \clearpage
+  \ifdigilib\else
   \if@twoside
   \ifodd\c@page\else
   \hbox{}
@@ -260,6 +303,7 @@
   \fi
   \newpage
   \if@twocolumn\hbox{}\newpage\fi
+  \fi
   \fi
   \fi
 }

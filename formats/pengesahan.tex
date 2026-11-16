@@ -8,6 +8,12 @@
 \addcontentsline{toc}{chapter}{HALAMAN {PENGESAHAN}}
 \addtocontents{toc}{\protect\cftpagenumberson{chapter}}
 
+\ifpengesahanpdf
+% Sisipkan lembar pengesahan PDF yang sudah ditandatangani
+% (aktifkan \pengesahanpdftrue di main_buku.tex / config/toggles.tex)
+\includepdf[pages=-]{\FilePengesahanPDF}
+\else
+
 % 1. Nyalakan watermark secara otomatis mulai dari halaman ini
 \AddToShipoutPictureBG{%
   \tikz[remember picture, overlay]
@@ -17,28 +23,28 @@
 }
 
 \begin{center}
-  {\fontsize{20}{0}\bfseries HALAMAN PENGESAHAN\par}
+  {\FontPengesahanLabel\bfseries HALAMAN PENGESAHAN\par}
   \vspace{0.8cm}
 
   \begin{minipage}{1\textwidth}
     \centering
-    \fontsize{18}{16}\bfseries\selectfont\MakeUppercase{\JudulPA}
+    \FontPengesahanJudul\bfseries\MakeUppercase{\JudulPA}
   \end{minipage}
   \par
 
   \vspace{0.6cm}
 
-  {\fontsize{14}{17}\selectfont Oleh:\par}
+  {\FontPengesahanIsi Oleh:\par}
   \vspace{0.1cm}
 
-  {\fontsize{14}{17}\bfseries
+  {\FontPengesahanIsi\bfseries
     \NamaMahasiswa\par
   NRP. \NRP\par}
 
   \vspace{0.6cm}
 
   \begin{spacing}{1}
-    {\fontsize{14}{17}\bfseries
+    {\FontPengesahanIsi\bfseries
       Proyek Akhir ini digunakan sebagai salah satu syarat untuk\\
       memperoleh Gelar \GelarLulus\\
       di Politeknik Elektronika Negeri Surabaya\\
@@ -48,13 +54,13 @@
 
 \vspace{0.2cm}
 \begin{center}
-  {\fontsize{14}{17}\bfseries Disetujui oleh:}
+  {\FontPengesahanIsi\bfseries Disetujui oleh:}
 \end{center}
 \vspace{0.2cm}
 
 % Daftar pembimbing dan penguji beserta kolom tanda tangan
 \noindent
-{\fontsize{14}{17}\selectfont
+{\FontPengesahanIsi
   \begin{tabular}{@{}l c l c@{}}
     Pembimbing 1 & : & \NamaPembimbingSatu   & (\hspace{2.5cm}) \\
     &   & NIP. \NIPPembimbingSatu & \\[3pt]
@@ -87,12 +93,12 @@
 \noindent
 \begin{minipage}{\textwidth}
   \begin{center}
-    {\fontsize{14}{17}\bfseries Mengetahui,}\par
-    {\fontsize{14}{17}\selectfont
+    {\FontPengesahanIsi\bfseries Mengetahui,}\par
+    {\FontPengesahanIsi
       Ketua Program Studi Sarjana Terapan \NamaProdi\par
     Politeknik Elektronika Negeri Surabaya}\par
     \vspace{1.5cm}
-    {\fontsize{14}{17}\selectfont
+    {\FontPengesahanIsi
       \underline{\NamaKetuaProdi}\par
     NIP. \NIPKetuaProdi\par}
   \end{center}
@@ -101,3 +107,4 @@
 % 3. Paksa render halaman terakhir, lalu MATIKAN watermark agar tidak bocor
 \clearpage
 \ClearShipoutPictureBG
+\fi
